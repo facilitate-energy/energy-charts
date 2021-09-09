@@ -2,6 +2,7 @@ import React from "react";
 import { Route } from "react-router-dom";
 import { Container, Row } from "react-bootstrap";
 import { Content, Footer, Header, Sidebar } from "./index";
+import config from "../config";
 
 function Layout() {
   return (
