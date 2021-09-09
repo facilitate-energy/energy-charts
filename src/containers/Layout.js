@@ -1,4 +1,5 @@
 import React from "react";
+import { Route } from "react-router-dom";
 import { Container, Row } from "react-bootstrap";
 import { Content, Footer, Header, Sidebar } from "./index";
 
@@ -9,7 +10,9 @@ function Layout() {
         <Header />
       </Row>
       <Row>
-        <Sidebar />
+        <Route path="/results">
+          <Sidebar />
+        </Route>
         <Content />
       </Row>
       <Row as="footer" className="mt-auto">
