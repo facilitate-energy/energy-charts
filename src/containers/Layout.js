@@ -1,15 +1,22 @@
 import React from "react";
+import { Container, Row } from "react-bootstrap";
 import { Content, Footer, Header, Sidebar } from "./index";
 
-const Layout = () => {
+function Layout() {
   return (
-    <>
-      <Header />
-      <Sidebar />
-      <Content />
-      <Footer />
-    </>
+    <Container fluid="ms" className="vh-100 d-flex flex-column">
+      <Row as="header" className="mb-auto">
+        <Header />
+      </Row>
+      <Row>
+        <Sidebar />
+        <Content />
+      </Row>
+      <Row as="footer" className="mt-auto">
+        <Footer />
+      </Row>
+    </Container>
   );
-};
+}
 
 export default Layout;

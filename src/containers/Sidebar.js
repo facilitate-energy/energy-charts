@@ -1,12 +1,8 @@
 import React from "react";
+import { Col } from "react-bootstrap";
 
-
-const Sidebar = () => {
-  return (
-    <div>
-      This is sidebar
-    </div>
-  );
-};
+function Sidebar() {
+  return <Col as="aside">This is sidebar</Col>;
+}
 
 export default Sidebar;

@@ -1,7 +1,8 @@
 import React from "react";
+import { Col } from "react-bootstrap";
 
-const Header = () => {
-  return <header>This is header</header>;
-};
+function Header() {
+  return <Col>This is header</Col>;
+}
 
 export default Header;

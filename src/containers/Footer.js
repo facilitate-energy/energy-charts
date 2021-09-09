@@ -1,7 +1,8 @@
 import React from "react";
+import { Col } from "react-bootstrap";
 
-const Footer = () => {
-  return <footer>This is footer</footer>;
-};
+function Footer() {
+  return <Col>This is footer</Col>;
+}
 
 export default Footer;
