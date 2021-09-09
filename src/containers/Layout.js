@@ -14,7 +14,7 @@ function Layout() {
         <Route path="/results">
           <Sidebar />
         </Route>
-        <Content />
+        <Content routes={config.routes} />
       </Row>
       <Row as="footer" className="mt-auto mx-0">
         <Footer />
