@@ -29,7 +29,8 @@ const config = {
     {
       exact: true,
       path: "/about",
-      component: Page
+      component: Page,
+      page: "about"
     },
     {
       exact: true,

@@ -12,7 +12,13 @@ function Content(props) {
               key={index}
               path={route.path}
               exact={route.exact}
-              children={<route.component to={route.redirectPath} />}
+              children={
+                <route.component
+                  to={route.redirectPath}
+                  page={route.page}
+                  charts={route.charts}
+                />
+              }
             />
           ))}
         </Switch>
