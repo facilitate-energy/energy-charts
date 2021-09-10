@@ -1,6 +1,7 @@
-import React from "react";
+import React, { Suspense } from "react";
 import { Card, Col, Row } from "react-bootstrap";
-import Chart from "./Chart";
+
+const Chart = React.lazy(() => import("./Chart"));
 
 function Charts(props) {
   return (
@@ -9,7 +10,9 @@ function Charts(props) {
         <Col key={idx}>
           <Card>
             <Card.Header>{chart}</Card.Header>
-            <Chart chartName={chart} primaryScenario="Scenario 1" />
+            <Suspense fallback={<div>Loading...</div>}>
+              <Chart chartName={chart} primaryScenario="Scenario 1" />
+            </Suspense>
           </Card>
         </Col>
       ))}
