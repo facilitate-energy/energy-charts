@@ -1,14 +1,24 @@
 import React from "react";
-import { VictoryBar } from "victory";
+import { VictoryChart, VictoryBar, VictoryStack, VictoryLegend } from "victory";
 import useFetch from "../hooks/useFetch";
 
 function Chart(props) {
   const { primaryScenario, chartName } = props;
 
-  const data = useFetch(`/data/${primaryScenario}/${chartName}.json`);
+  let chartData = useFetch(`/data/${primaryScenario}/${chartName}.json`);
 
   return (
-    <>{data && <VictoryBar data={data.data[0].seriesValues} x={0} y={1} />}</>
+    <>
+      <VictoryChart>
+        {chartData && (
+          <VictoryStack colorScale="qualitative">
+            {chartData.data.map((series, idx) => (
+              <VictoryBar key={idx} data={series.seriesValues} x={0} y={1} />
+            ))}
+          </VictoryStack>
+        )}
+      </VictoryChart>
+    </>
   );
 }
 
