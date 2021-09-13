@@ -9,8 +9,9 @@ function ChartLegend({ seriesNames, colorScale }) {
         data={seriesNames.map((seriesName) => ({
           name: seriesName
         }))}
-        itemsPerRow={5}
+        itemsPerRow={4}
         height={60}
+        gutter={30}
         colorScale={colorScale}
       />
     </>

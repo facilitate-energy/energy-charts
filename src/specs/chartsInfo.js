@@ -19,19 +19,23 @@ const chartsInfo = {
       "#f4777f",
       "#cf3759",
       "#93003a"
-    ]
+    ],
+    unit: "Unit"
   },
   "chart 2": {
     seriesNames: ["Series 1", "Series 2", "Series 3", "Series 4"],
-    colorScale: ["#00429d", "#4771b2", "#73a2c6", "#a5d5d8"]
+    colorScale: ["#00429d", "#4771b2", "#73a2c6", "#a5d5d8"],
+    unit: "Unit"
   },
   "chart 3": {
     seriesNames: ["Series 1", "Series 2", "Series 3", "Series 4"],
-    colorScale: ["#00429d", "#4771b2", "#73a2c6", "#a5d5d8"]
+    colorScale: ["#00429d", "#4771b2", "#73a2c6", "#a5d5d8"],
+    unit: "Unit"
   },
   "chart 4": {
     seriesNames: ["Series 3", "Series 6", "Series 7"],
-    colorScale: ["#73a2c6", "#f4777f", "#cf3759"]
+    colorScale: ["#73a2c6", "#f4777f", "#cf3759"],
+    unit: "Unit"
   }
 };
 

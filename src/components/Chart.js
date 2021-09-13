@@ -1,15 +1,27 @@
 import React from "react";
-import { VictoryChart, VictoryBar, VictoryStack } from "victory";
+import {
+  VictoryChart,
+  VictoryAxis,
+  VictoryLabel,
+  VictoryBar,
+  VictoryStack
+} from "victory";
 import useFetch from "../hooks/useFetch";
 
 function Chart(props) {
-  const { primaryScenario, chartName, colorScale, seriesNames } = props;
+  const { primaryScenario, chartName, colorScale, seriesNames, unit } = props;
 
   let chartData = useFetch(`/data/${primaryScenario}/${chartName}.json`);
 
   return (
     <>
-      <VictoryChart height={400} width={450}>
+      <VictoryChart domainPadding={{ x: 20 }}>
+        <VictoryAxis tickFormat={(t) => t.toString()} />
+        <VictoryAxis
+          dependentAxis
+          label={unit}
+          axisLabelComponent={<VictoryLabel y={35} x={30} angle={0} />}
+        />
         {chartData && (
           <VictoryStack>
             {chartData.data.map((series, idx) => (
