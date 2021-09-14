@@ -34,37 +34,38 @@ const config = {
     },
     {
       exact: true,
-      path: "/results/section-1/subsection-1",
+      path: "/charts/group1/subgroup1",
       component: Charts,
       charts: ["chart 1", "chart 2", "chart 3", "chart 4"]
     },
     {
       exact: true,
-      path: "/results/section-1/subsection-2",
+      path: "/charts/group1/subgroup2",
       component: Charts,
       charts: ["chart 1", "chart 2", "chart 3", "chart 4"]
     },
     {
       exact: true,
-      path: "/results/section-2",
+      path: "/charts/group2",
       component: Charts,
       charts: ["chart 1", "chart 2", "chart 3", "chart 4"]
     },
     {
-      path: "/results/section-2/",
-      redirectPath: "/results/section-2",
+      path: "/charts/group2/",
+      redirectPath: "/charts/group2",
       component: Redirect
     },
     {
-      path: "/results/",
-      redirectPath: "/results/section-1/subsection-1",
+      path: "/charts/",
+      redirectPath: "/charts/group1/subgroup1",
       component: Redirect
     },
     { exact: true, path: "/", redirectPath: "/about", component: Redirect },
     {
       component: PageNotFound
     }
-  ]
+  ],
+  routeWithSidebar: "/charts"
 };
 
 export { config as default };

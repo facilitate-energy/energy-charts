@@ -1,8 +1,8 @@
 import React from "react";
-import { Col } from "react-bootstrap";
+import NavBar from "../components/NavBar.js";
 
 function Header() {
-  return <Col>This is header</Col>;
+  return <NavBar />;
 }
 
 export default Header;

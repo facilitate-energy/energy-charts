@@ -1,0 +1,30 @@
+button.navbar-toggler {
+  border: 0px;
+}
+
+button > div.hamburger {
+  width: 25px;
+  height: 2px;
+  background-color: rgba(0, 0, 0, 0.9);
+  margin: 6px 0;
+  transition: 0.4s;
+}
+
+/* Rotate first bar */
+button:not(.collapsed) > .bar1 {
+  -webkit-transform: translate(0px, 8px) rotate(45deg);
+  transform: translate(0px, 8px) rotate(45deg);
+}
+
+/* Fade out second bar */
+button:not(.collapsed) > .bar2 {
+  opacity: 0;
+  -webkit-transform: translate(-200px, 0px);
+  transform: translate(-200px, 0px);
+}
+
+/* Rotate third bar */
+button:not(.collapsed) > .bar3 {
+  -webkit-transform: translate(0px, -8px) rotate(-45deg);
+  transform: translate(0px, -8px) rotate(-45deg);
+}
