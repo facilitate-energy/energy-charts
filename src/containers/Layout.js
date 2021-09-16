@@ -12,7 +12,10 @@ function Layout(props) {
       </Row>
       <Row className="m-0">
         <Route path={config.routeWithSidebar}>
-          <Sidebar />
+          <Sidebar
+            scenarioList={config.scenarios}
+            selectedScenario={config.defaultScenarioGroup}
+          />
         </Route>
         <Content routes={config.routes} />
       </Row>

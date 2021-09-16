@@ -8,19 +8,19 @@ const Page = React.lazy(() => import("./components/Page"));
 const config = {
   scenarios: [
     {
-      group: "Scenario 1",
+      name: "Scenario 1",
       variants: [{ name: "Scenario 1", specs: null }]
     },
     {
-      group: "Scenario 2",
+      name: "Scenario 2",
       variants: [{ name: "Scenario 2", specs: null }]
     },
     {
-      group: "Scenario 3",
+      name: "Scenario 3",
       variants: [{ name: "Scenario 3", specs: null }]
     },
     {
-      group: "Scenario 4",
+      name: "Scenario 4",
       variants: [{ name: "Scenario 4", specs: null }]
     }
   ],
