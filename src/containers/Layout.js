@@ -2,7 +2,6 @@ import React from "react";
 import { Route } from "react-router-dom";
 import { Container, Row } from "react-bootstrap";
 import { Content, Footer, Header, Sidebar } from "./index";
-import config from "../config";
 
 function Layout(props) {
   return (
@@ -11,13 +10,14 @@ function Layout(props) {
         <Header />
       </Row>
       <Row className="m-0">
-        <Route path={config.routeWithSidebar}>
+        <Route path={props.routeWithSidebar}>
           <Sidebar
-            scenarioList={config.scenarios}
-            selectedScenario={config.defaultScenarioGroup}
+            scenarioList={props.scenarios}
+            selectedScenario={props.selectedScenario}
+            setSelectedScenario={props.setSelectedScenario}
           />
         </Route>
-        <Content routes={config.routes} />
+        <Content routes={props.routes} />
       </Row>
       <Row as="footer" className="mt-auto mx-0">
         <Footer />
