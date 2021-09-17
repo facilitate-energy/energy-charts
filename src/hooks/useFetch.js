@@ -14,6 +14,7 @@ function useFetch(path) {
 
         setContent(data);
       } catch (error) {
+        setContent(null);
         console.error(error);
       }
     };
