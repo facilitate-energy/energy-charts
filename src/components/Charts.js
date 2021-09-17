@@ -19,7 +19,7 @@ function Charts(props) {
             <Suspense fallback={<EmptyChart />}>
               <Chart
                 chartName={chart}
-                primaryScenario="Scenario 1"
+                primaryScenario={props.selectedScenario}
                 {...chartsInfo[chart]}
               />
             </Suspense>

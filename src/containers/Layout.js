@@ -17,7 +17,10 @@ function Layout(props) {
             setSelectedScenario={props.setSelectedScenario}
           />
         </Route>
-        <Content routes={props.routes} />
+        <Content
+          routes={props.routes}
+          selectedScenario={props.selectedScenario}
+        />
       </Row>
       <Row as="footer" className="mt-auto mx-0">
         <Footer />

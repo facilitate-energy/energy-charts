@@ -39,6 +39,7 @@ function Content(props) {
           </Row>
         </Route>
       ))}
+
       {subsectionNavs.map((subsectionNav, index) => (
         <Route key={index} path={subsectionNav.path}>
           <Row>
@@ -52,6 +53,7 @@ function Content(props) {
           </Row>
         </Route>
       ))}
+
       <Suspense fallback={<PageLoading />}>
         <Switch>
           {props.routes.map((route, index) => (
@@ -64,6 +66,7 @@ function Content(props) {
                   to={route.redirectPath}
                   page={route.page}
                   charts={route.charts}
+                  selectedScenario={props.selectedScenario}
                 />
               }
             />

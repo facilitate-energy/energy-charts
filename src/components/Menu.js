@@ -12,6 +12,7 @@ function Menu(props) {
         <List
           items={props.scenarioList}
           selectedItem={props.selectedScenario}
+          onSelection={props.setSelectedScenario}
         />
       </ListGroup>
       <hr />
