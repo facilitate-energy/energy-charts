@@ -9,13 +9,21 @@ import {
 import useFetch from "../hooks/useFetch";
 
 function Chart(props) {
-  const { primaryScenario, chartName, colorScale, seriesNames, unit } = props;
+  const {
+    primaryScenario,
+    chartName,
+    colorScale,
+    seriesNames,
+    unit,
+    maxY,
+    minY
+  } = props;
 
   let chartData = useFetch(`/data/${primaryScenario}/${chartName}.json`);
 
   return (
     <>
-      <VictoryChart domainPadding={{ x: 20 }}>
+      <VictoryChart domainPadding={{ x: 20 }} domain={{ y: [minY, maxY] }}>
         <VictoryAxis tickFormat={(t) => t.toString()} />
         <VictoryAxis
           dependentAxis

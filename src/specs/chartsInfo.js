@@ -20,22 +20,30 @@ const chartsInfo = {
       "#cf3759",
       "#93003a"
     ],
-    unit: "Unit"
+    unit: "Unit",
+    maxY: 12,
+    minY: 0
   },
   "chart 2": {
     seriesNames: ["Series 1", "Series 2", "Series 3", "Series 4"],
     colorScale: ["#00429d", "#4771b2", "#73a2c6", "#a5d5d8"],
-    unit: "Unit"
+    unit: "Unit",
+    maxY: 6,
+    minY: 0
   },
   "chart 3": {
     seriesNames: ["Series 1", "Series 2", "Series 3", "Series 4"],
     colorScale: ["#00429d", "#4771b2", "#73a2c6", "#a5d5d8"],
-    unit: "Unit"
+    unit: "Unit",
+    maxY: 5,
+    minY: 0
   },
   "chart 4": {
     seriesNames: ["Series 3", "Series 6", "Series 7"],
     colorScale: ["#73a2c6", "#f4777f", "#cf3759"],
-    unit: "Unit"
+    unit: "Unit",
+    maxY: 3,
+    minY: 0
   }
 };
 
