@@ -10,7 +10,7 @@ import useFetch from "../hooks/useFetch";
 
 function Chart(props) {
   const {
-    primaryScenario,
+    selectedScenarios,
     chartName,
     colorScale,
     seriesNames,
@@ -20,7 +20,7 @@ function Chart(props) {
     xGridMarks
   } = props;
 
-  let chartData = useFetch(`/data/${primaryScenario}/${chartName}.json`);
+  let chartData = useFetch(`/data/${selectedScenarios[0]}/${chartName}.json`);
 
   return (
     <>

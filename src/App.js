@@ -3,15 +3,18 @@ import { Layout } from "./containers";
 import config from "./config";
 
 function App() {
-  const [selectedScenario, setSelectedScenario] = useState(
-    config.defaultScenarioGroup
-  );
+  const [mainScenario, setMainScenario] = useState(config.defaultScenarioGroup);
+
+  const [compareScenario, setCompareScenario] = useState(null);
+
+  const selectedScenarios = [mainScenario, compareScenario];
 
   return (
     <Layout
       {...config}
-      selectedScenario={selectedScenario}
-      setSelectedScenario={setSelectedScenario}
+      selectedScenarios={selectedScenarios}
+      setMainScenario={setMainScenario}
+      setCompareScenario={setCompareScenario}
     />
   );
 }

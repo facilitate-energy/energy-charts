@@ -13,13 +13,13 @@ function Layout(props) {
         <Route path={props.routeWithSidebar}>
           <Sidebar
             scenarioList={props.scenarios}
-            selectedScenario={props.selectedScenario}
-            setSelectedScenario={props.setSelectedScenario}
+            selectedScenarios={props.selectedScenarios}
+            setMainScenario={props.setMainScenario}
           />
         </Route>
         <Content
           routes={props.routes}
-          selectedScenario={props.selectedScenario}
+          selectedScenarios={props.selectedScenarios}
           contentNavs={props.contentNavs}
         />
       </Row>

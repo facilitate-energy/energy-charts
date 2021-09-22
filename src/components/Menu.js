@@ -8,11 +8,11 @@ function Menu(props) {
   return (
     <>
       {props.Title}
-      <ListGroup as="ul" className="primaryScnarioList">
+      <ListGroup as="ul" className="primaryScenarioList">
         <List
           items={props.scenarioList}
-          selectedItem={props.selectedScenario}
-          onSelection={props.setSelectedScenario}
+          selectedItem={props.selectedScenarios[0]}
+          onSelection={props.setMainScenario}
         />
       </ListGroup>
       <hr />

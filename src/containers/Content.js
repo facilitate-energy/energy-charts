@@ -25,7 +25,7 @@ function Content(props) {
                   to={route.redirectPath}
                   page={route.page}
                   charts={route.charts}
-                  selectedScenario={props.selectedScenario}
+                  selectedScenarios={props.selectedScenarios}
                 />
               }
             />
