@@ -65,7 +65,29 @@ const config = {
       component: PageNotFound
     }
   ],
-  routeWithSidebar: "/charts"
+  routeWithSidebar: "/charts",
+  contentNavs: [
+    {
+      path: "/charts",
+      links: [
+        { to: "/charts/group1", text: "Group 1" },
+        { to: "/charts/group2", text: "Group 2" }
+      ],
+      variant: "tabs"
+    },
+    {
+      path: "/charts/group1",
+      links: [
+        { to: "/charts/group1/subgroup1", text: "Subgroup 1" },
+        { to: "/charts/group1/subgroup2", text: "Subgroup 2" }
+      ],
+      variant: "pills"
+    }
+  ],
+  headerNavLinks: [
+    { to: "/about", text: "About" },
+    { to: "/charts", text: "Charts" }
+  ]
 };
 
 export { config as default };

@@ -4,10 +4,7 @@ import { Navbar, Nav, Container } from "react-bootstrap";
 import NavToggle from "./NavToggle";
 
 function NavBar(props) {
-  const navLinks = [
-    { to: "/about", text: "About" },
-    { to: "/charts", text: "Charts" }
-  ];
+  const { navLinks } = props;
 
   const [expandNavbar, setExpandNavbar] = useState(false);
 
