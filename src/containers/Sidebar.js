@@ -1,6 +1,6 @@
 import React from "react";
 import { Col } from "react-bootstrap";
-import Menu from "../components/Menu";
+import { Menu } from "../components";
 
 function Sidebar(props) {
   return (

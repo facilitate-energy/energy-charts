@@ -1,8 +1,7 @@
 import React, { Suspense } from "react";
 import { Route, Switch } from "react-router-dom";
 import { Col } from "react-bootstrap";
-import NavRow from "../components/NavRow";
-import PageLoading from "../components/PageLoading";
+import { NavRow, PageLoading } from "../components";
 
 function Content(props) {
   return (

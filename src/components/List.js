@@ -2,7 +2,7 @@ import React from "react";
 import { ListGroup } from "react-bootstrap";
 
 function List(props) {
-  const { items, selectedItem } = props;
+  const { items, selectedItem, onSelection } = props;
 
   return (
     <>
@@ -12,7 +12,7 @@ function List(props) {
           id={item.name}
           active={selectedItem === item.name ? true : false}
           onClick={() => {
-            props.onSelection(item.name);
+            onSelection(item.name);
           }}
         >
           {item.name}

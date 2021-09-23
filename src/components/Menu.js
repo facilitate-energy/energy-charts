@@ -1,6 +1,6 @@
 import React from "react";
 import { ListGroup, Collapse } from "react-bootstrap";
-import List from "./List";
+import { List, OptionList } from "../components";
 
 function Menu(props) {
   //const scenarioList = props.scenarioList.reduce()

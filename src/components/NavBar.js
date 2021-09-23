@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { Navbar, Nav, Container } from "react-bootstrap";
-import NavToggle from "./NavToggle";
+import { NavToggle } from "../components";
 
 function NavBar(props) {
   const { navLinks } = props;

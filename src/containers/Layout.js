@@ -1,7 +1,7 @@
 import React from "react";
 import { Route } from "react-router-dom";
 import { Container, Row } from "react-bootstrap";
-import { Content, Footer, Header, Sidebar } from "./index";
+import { Content, Footer, Header, Sidebar } from "../containers";
 
 function Layout(props) {
   return (

@@ -1,7 +1,6 @@
 import React, { Suspense } from "react";
 import { Card, Col, Row } from "react-bootstrap";
-import ChartLegend from "./ChartLegend";
-import EmptyChart from "./EmptyChart";
+import { EmptyChart, ChartLegend } from "../components";
 import chartsInfo from "../specs/chartsInfo";
 
 const Chart = React.lazy(() => import("./Chart"));
