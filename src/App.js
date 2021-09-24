@@ -7,14 +7,18 @@ function App() {
 
   const [compareScenario, setCompareScenario] = useState(null);
 
+  const [showDifference, setShowDifference] = useState(false);
+
   const selectedScenarios = [mainScenario, compareScenario];
 
   return (
     <Layout
       {...config}
       selectedScenarios={selectedScenarios}
+      showDifference={showDifference}
       setMainScenario={setMainScenario}
       setCompareScenario={setCompareScenario}
+      setShowDifference={setShowDifference}
     />
   );
 }

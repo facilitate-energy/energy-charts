@@ -19,6 +19,7 @@ function Charts(props) {
               <Chart
                 chartName={chart}
                 selectedScenarios={props.selectedScenarios}
+                showDifference={props.showDifference}
                 {...chartsInfo[chart]}
               />
             </Suspense>

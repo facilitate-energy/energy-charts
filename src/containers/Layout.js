@@ -14,12 +14,16 @@ function Layout(props) {
           <Sidebar
             scenarioList={props.scenarios}
             selectedScenarios={props.selectedScenarios}
+            showDifference={props.showDifference}
             setMainScenario={props.setMainScenario}
+            setCompareScenario={props.setCompareScenario}
+            setShowDifference={props.setShowDifference}
           />
         </Route>
         <Content
           routes={props.routes}
           selectedScenarios={props.selectedScenarios}
+          showDifference={props.showDifference}
           contentNavs={props.contentNavs}
         />
       </Row>

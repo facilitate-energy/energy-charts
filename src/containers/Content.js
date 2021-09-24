@@ -25,6 +25,7 @@ function Content(props) {
                   page={route.page}
                   charts={route.charts}
                   selectedScenarios={props.selectedScenarios}
+                  showDifference={props.showDifference}
                 />
               }
             />
