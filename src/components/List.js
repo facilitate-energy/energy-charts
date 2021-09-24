@@ -4,18 +4,20 @@ import { ListGroup } from "react-bootstrap";
 function List(props) {
   const { items, selectedItem, onSelection } = props;
 
+  console.log(items);
+
   return (
     <>
       {items.map((item, idx) => (
         <ListGroup.Item
           key={idx}
-          id={item.name}
-          active={selectedItem === item.name ? true : false}
+          id={item}
+          active={selectedItem === item ? true : false}
           onClick={() => {
-            onSelection(item.name);
+            onSelection(item);
           }}
         >
-          {item.name}
+          {item}
         </ListGroup.Item>
       ))}
     </>

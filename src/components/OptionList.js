@@ -6,8 +6,8 @@ function OptionList(props) {
   return (
     <>
       {items.map((item, idx) => (
-        <option key={idx} value={item.name}>
-          {item.name}
+        <option key={idx} value={item}>
+          {item}
         </option>
       ))}
     </>

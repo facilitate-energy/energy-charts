@@ -22,12 +22,15 @@ function Menu(props) {
     ? props.selectedScenarios[1]
     : "None";
 
+  //Could use/create pluck instead
+  const scenarioList = props.scenarioList.map((scenario) => scenario.name);
+
   return (
     <>
       {props.Title}
       <ListGroup as="ul" className="MainScenarioList">
         <List
-          items={props.scenarioList}
+          items={scenarioList}
           selectedItem={props.selectedScenarios[0]}
           onSelection={props.setMainScenario}
         />
@@ -41,7 +44,7 @@ function Menu(props) {
             value={selectedCompareScenario}
           >
             <option>None</option>
-            <OptionList items={props.scenarioList} />
+            <OptionList items={scenarioList} />
           </Form.Select>
         </FloatingLabel>
 
