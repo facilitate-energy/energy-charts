@@ -8,6 +8,8 @@ import {
   VictoryGroup
 } from "victory";
 import useFetch from "../hooks/useFetch";
+import calculateDifference from "../utils/calculateDifference";
+import normaliseData from "../utils/normaliseData";
 
 function Chart(props) {
   const {
@@ -22,6 +24,8 @@ function Chart(props) {
     xGridMarks
   } = props;
 
+  const chartDomain = showDifference ? null : { y: [minY, maxY] };
+
   const getDataPath = (scenario, chart) => {
     if (scenario && chart) {
       return `/data/${scenario}/${chart}.json`;
@@ -30,24 +34,32 @@ function Chart(props) {
     }
   };
 
-  const mainScenarioData = useFetch(
-    getDataPath(selectedScenarios[0], chartName)
-  );
-  const compareScenarioData = useFetch(
+  let mainScenarioData = useFetch(getDataPath(selectedScenarios[0], chartName));
+  let compareScenarioData = useFetch(
     getDataPath(selectedScenarios[1], chartName)
   );
 
-  const calculateDifference = (data) => {
-    return [data[0]];
-  };
+  mainScenarioData = normaliseData(
+    mainScenarioData,
+    selectedScenarios[0],
+    seriesNames,
+    xGridMarks
+  );
+
+  compareScenarioData = normaliseData(
+    compareScenarioData,
+    selectedScenarios[1],
+    seriesNames,
+    xGridMarks
+  );
 
   const chartData = showDifference
-    ? calculateDifference([mainScenarioData, compareScenarioData])
+    ? [calculateDifference([mainScenarioData, compareScenarioData])]
     : [mainScenarioData, compareScenarioData];
 
   return (
     <>
-      <VictoryChart domainPadding={{ x: 20 }} domain={{ y: [minY, maxY] }}>
+      <VictoryChart domainPadding={{ x: 20 }} domain={chartDomain}>
         <VictoryAxis tickFormat={(t) => t.toString()} tickValues={xGridMarks} />
         <VictoryAxis
           dependentAxis

@@ -4,8 +4,6 @@ import { ListGroup } from "react-bootstrap";
 function List(props) {
   const { items, selectedItem, onSelection } = props;
 
-  console.log(items);
-
   return (
     <>
       {items.map((item, idx) => (
