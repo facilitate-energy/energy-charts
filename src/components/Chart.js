@@ -16,7 +16,8 @@ function Chart(props) {
     seriesNames,
     unit,
     maxY,
-    minY
+    minY,
+    xGridMarks
   } = props;
 
   let chartData = useFetch(`/data/${primaryScenario}/${chartName}.json`);
@@ -24,7 +25,7 @@ function Chart(props) {
   return (
     <>
       <VictoryChart domainPadding={{ x: 20 }} domain={{ y: [minY, maxY] }}>
-        <VictoryAxis tickFormat={(t) => t.toString()} />
+        <VictoryAxis tickFormat={(t) => t.toString()} tickValues={xGridMarks} />
         <VictoryAxis
           dependentAxis
           label={unit}

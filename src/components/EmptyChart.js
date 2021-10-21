@@ -2,12 +2,12 @@ import React from "react";
 import { VictoryChart, VictoryAxis, VictoryLabel } from "victory";
 
 function EmptyChart(props) {
-  const { unit, maxY, minY } = props;
+  const { unit, maxY, minY, xGridMarks } = props;
 
   return (
     <>
       <VictoryChart domainPadding={{ x: 20 }} domain={{ y: [minY, maxY] }}>
-        <VictoryAxis tickFormat={(t) => t.toString()} />
+        <VictoryAxis tickFormat={(t) => t.toString()} tickValues={xGridMarks} />
         <VictoryAxis
           dependentAxis
           label={unit}
