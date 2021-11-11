@@ -5,7 +5,9 @@ import {
   VictoryLabel,
   VictoryBar,
   VictoryStack,
-  VictoryGroup
+  VictoryGroup,
+  VictoryTooltip,
+  VictoryPortal
 } from "victory";
 import useFetch from "../hooks/useFetch";
 import calculateDifference from "../utils/calculateDifference";
@@ -57,10 +59,24 @@ function Chart(props) {
     ? [calculateDifference([mainScenarioData, compareScenarioData])]
     : [mainScenarioData, compareScenarioData];
 
+  const getTotal = (data, period) => {
+    return data.reduce((total, currentSeries) => {
+      return (
+        total +
+        currentSeries.seriesValues.find((values) => values[0] === period)[1]
+      );
+    }, 0);
+  };
+
   return (
     <>
       <VictoryChart domainPadding={{ x: 20 }} domain={chartDomain}>
-        <VictoryAxis tickFormat={(t) => t.toString()} tickValues={xGridMarks} />
+        <VictoryPortal>
+          <VictoryAxis
+            tickFormat={(t) => t.toString()}
+            tickValues={xGridMarks}
+          />
+        </VictoryPortal>
         <VictoryAxis
           dependentAxis
           label={unit}
@@ -75,8 +91,19 @@ function Chart(props) {
                     <VictoryBar
                       key={idx}
                       data={series.seriesValues}
+                      labels={({ datum }) =>
+                        `${
+                          showDifference
+                            ? scenario.name[0] + " - " + scenario.name[1]
+                            : scenario.name
+                        }
+                        ${datum[0]}
+                        ${series.seriesName}: ${datum[1]} ${unit}
+                        Total: ${getTotal(scenario.data, datum[0])} ${unit}`
+                      }
                       x={0}
                       y={1}
+                      labelComponent={<VictoryTooltip />}
                       style={{
                         data: {
                           fill: colorScale[
