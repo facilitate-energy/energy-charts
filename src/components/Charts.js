@@ -15,7 +15,7 @@ function Charts(props) {
         <Col key={idx}>
           <Card>
             <Card.Header>{chart}</Card.Header>
-            <Suspense fallback={<EmptyChart />}>
+            <Suspense fallback={<EmptyChart {...chartsInfo[chart]} />}>
               <Chart
                 chartName={chart}
                 selectedScenarios={props.selectedScenarios}
