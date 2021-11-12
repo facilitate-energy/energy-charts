@@ -1,5 +1,47 @@
+ul.main-scenario-list li {
+  border: unset;
+}
+
+ul.main-scenario-list li:hover {
+  cursor: pointer;
+  background-color: #b3b3b3;
+}
+
+ul.main-scenario-list li.active {
+  background-color: maroon;
+}
+
+#compare-scenario-list:hover {
+  cursor: pointer;
+  box-shadow: none;
+}
+
+#compare-scenario-list:focus:not(:focus-visible) {
+  box-shadow: none;
+  border-color: #ced4da;
+}
+
+.form-check.form-switch * {
+  cursor: pointer;
+}
+
+.form-check-input:focus:not(:focus-visible) {
+  box-shadow: none;
+  border-color: rgba(0, 0, 0, 0.25);
+}
+
+.form-check-input:not(:checked):focus:not(:focus-visible) {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='rgba%280, 0, 0, 0.25%29'/%3e%3c/svg%3e");
+}
+
+.form-check-input:checked {
+  background-color: maroon;
+  border-color: maroon;
+}
+
 button.navbar-toggler {
   border: 0px;
+  border-color: unset;
 }
 
 button > div.hamburger {
@@ -27,4 +69,8 @@ button:not(.collapsed) > .bar2 {
 button:not(.collapsed) > .bar3 {
   -webkit-transform: translate(0px, -8px) rotate(-45deg);
   transform: translate(0px, -8px) rotate(-45deg);
+}
+
+button:focus:not(:focus-visible) {
+  box-shadow: none;
 }

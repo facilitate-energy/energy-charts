@@ -10,6 +10,7 @@ function List(props) {
         <ListGroup.Item
           key={idx}
           id={item}
+          as="li"
           active={selectedItem === item ? true : false}
           onClick={() => {
             onSelection(item);

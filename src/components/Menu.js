@@ -28,17 +28,17 @@ function Menu(props) {
   return (
     <>
       {props.Title}
-      <ListGroup as="ul" className="MainScenarioList">
+      <ListGroup as="ul" variant="flush" className="main-scenario-list">
         <List
           items={scenarioList}
           selectedItem={props.selectedScenarios[0]}
           onSelection={props.setMainScenario}
         />
       </ListGroup>
-      <hr className="MenuSeparatorLine" />
+      <hr className="menu-separator" />
 
       <Form>
-        <FloatingLabel controlId="CompareScenarioList" label="Compare with">
+        <FloatingLabel controlId="compare-scenario-list" label="Compare with">
           <Form.Select
             onChange={updateCompareScenario}
             value={selectedCompareScenario}
@@ -50,17 +50,17 @@ function Menu(props) {
 
         <Collapse in={props.selectedScenarios[1] ? true : false}>
           <div>
-            <hr className="MenuSeparatorLine" />
+            <hr className="menu-separator" />
             <Form.Switch
               disabled={!props.selectedScenarios[1]}
               checked={props.showDifference}
               label="Show difference"
-              id="ScenarioDifferenceSwitch"
+              id="scenario-difference-switch"
               onChange={updateShowDifference}
             />
           </div>
         </Collapse>
-        <hr className="MenuSeparatorLine" />
+        <hr className="menu-separator" />
       </Form>
     </>
   );

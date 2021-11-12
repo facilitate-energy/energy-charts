@@ -4,7 +4,7 @@ import { Menu } from "../components";
 
 function Sidebar(props) {
   return (
-    <Col as="aside">
+    <Col as="aside" md="auto" className="p-3 d-none d-md-block">
       <Menu {...props} />
     </Col>
   );
