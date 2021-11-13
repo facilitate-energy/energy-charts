@@ -7,11 +7,15 @@ function useFetch(path) {
     const fetchData = async () => {
       try {
         const response = await fetch(path);
-        const data =
-          path.split(".").pop() === "md"
-            ? await response.text()
-            : await response.json();
-
+        let data = null;
+        const contentType = await response.headers.get("content-type");
+        if (contentType.includes("application/json")) {
+          data = await response.json();
+        } else if (contentType.includes("markdown")) {
+          data = await response.text();
+        } else {
+          data = null;
+        }
         setContent(data);
       } catch (error) {
         setContent(null);
