@@ -25,9 +25,11 @@ function Menu(props) {
   //Could use/create pluck instead
   const scenarioList = props.scenarioList.map((scenario) => scenario.name);
 
+  const Title = props.Tilte ? props.Title : <h2>Scenarios</h2>;
+
   return (
     <>
-      {props.Title}
+      {Title}
       <ListGroup as="ul" variant="flush" className="main-scenario-list">
         <List
           items={scenarioList}
