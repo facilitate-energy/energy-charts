@@ -1,7 +1,8 @@
-import React from "react";
+import React, { Suspense } from "react";
 import { Route } from "react-router-dom";
 import { Container, Row } from "react-bootstrap";
 import { Content, Footer, Header, Sidebar } from "../containers";
+import { PageLoading } from "../components";
 
 function Layout(props) {
   return (
@@ -9,24 +10,26 @@ function Layout(props) {
       <Row as="header" className="mb-auto mx-0">
         <Header navLinks={props.headerNavLinks} />
       </Row>
-      <Row className="m-0">
-        <Route path={props.routeWithSidebar}>
-          <Sidebar
-            scenarioList={props.scenarios}
+      <Suspense fallback={<PageLoading />}>
+        <Row className="m-0">
+          <Route path={props.routeWithSidebar}>
+            <Sidebar
+              scenarioList={props.scenarios}
+              selectedScenarios={props.selectedScenarios}
+              showDifference={props.showDifference}
+              setMainScenario={props.setMainScenario}
+              setCompareScenario={props.setCompareScenario}
+              setShowDifference={props.setShowDifference}
+            />
+          </Route>
+          <Content
+            routes={props.routes}
             selectedScenarios={props.selectedScenarios}
             showDifference={props.showDifference}
-            setMainScenario={props.setMainScenario}
-            setCompareScenario={props.setCompareScenario}
-            setShowDifference={props.setShowDifference}
+            contentNavs={props.contentNavs}
           />
-        </Route>
-        <Content
-          routes={props.routes}
-          selectedScenarios={props.selectedScenarios}
-          showDifference={props.showDifference}
-          contentNavs={props.contentNavs}
-        />
-      </Row>
+        </Row>
+      </Suspense>
       <Row as="footer" className="mt-auto mx-0">
         <Footer />
       </Row>

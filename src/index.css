@@ -1,3 +1,12 @@
+html {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+html ::-webkit-scrollbar {
+  display: none;
+}
+
 aside {
   min-width: 250px;
 }

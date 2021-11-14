@@ -1,9 +1,9 @@
 import React from "react";
 import { Redirect } from "react-router-dom";
-import PageNotFound from "./components/NotFound";
 
 const Charts = React.lazy(() => import("./components/Charts"));
 const Page = React.lazy(() => import("./components/Page"));
+const PageNotFound = React.lazy(() => import("./components/NotFound"));
 
 const config = {
   scenarios: [

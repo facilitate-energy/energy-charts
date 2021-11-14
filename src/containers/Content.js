@@ -1,7 +1,7 @@
-import React, { Suspense } from "react";
+import React from "react";
 import { Route, Switch } from "react-router-dom";
 import { Col } from "react-bootstrap";
-import { NavRow, PageLoading } from "../components";
+import { NavRow } from "../components";
 
 function Content(props) {
   return (
@@ -12,26 +12,24 @@ function Content(props) {
         </Route>
       ))}
 
-      <Suspense fallback={<PageLoading />}>
-        <Switch>
-          {props.routes.map((route, index) => (
-            <Route
-              key={index}
-              path={route.path}
-              exact={route.exact}
-              children={
-                <route.component
-                  to={route.redirectPath}
-                  page={route.page}
-                  charts={route.charts}
-                  selectedScenarios={props.selectedScenarios}
-                  showDifference={props.showDifference}
-                />
-              }
-            />
-          ))}
-        </Switch>
-      </Suspense>
+      <Switch>
+        {props.routes.map((route, index) => (
+          <Route
+            key={index}
+            path={route.path}
+            exact={route.exact}
+            children={
+              <route.component
+                to={route.redirectPath}
+                page={route.page}
+                charts={route.charts}
+                selectedScenarios={props.selectedScenarios}
+                showDifference={props.showDifference}
+              />
+            }
+          />
+        ))}
+      </Switch>
     </Col>
   );
 }
