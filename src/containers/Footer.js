@@ -1,8 +1,14 @@
 import React from "react";
-import { Col } from "react-bootstrap";
+import { Container } from "react-bootstrap";
+import { FooterLogos, FooterCredits } from "../components";
 
-function Footer() {
-  return <Col>This is footer</Col>;
+function Footer(props) {
+  return (
+    <Container fluid className="footer bg-light mt-auto pr-0" as="footer">
+      <FooterLogos />
+      <FooterCredits />
+    </Container>
+  );
 }
 
 export default Footer;
