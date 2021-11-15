@@ -1,9 +1,7 @@
-import React, { Suspense } from "react";
+import React from "react";
 import { Card, Col, Row } from "react-bootstrap";
-import { EmptyChart, ChartLegend } from "../components";
+import { Chart, ChartLegend } from "../components";
 import chartsInfo from "../specs/chartsInfo";
-
-const Chart = React.lazy(() => import("./Chart"));
 
 function Charts(props) {
   return (
@@ -15,14 +13,12 @@ function Charts(props) {
         <Col key={idx}>
           <Card>
             <Card.Header>{chart}</Card.Header>
-            <Suspense fallback={<EmptyChart {...chartsInfo[chart]} />}>
-              <Chart
-                chartName={chart}
-                selectedScenarios={props.selectedScenarios}
-                showDifference={props.showDifference}
-                {...chartsInfo[chart]}
-              />
-            </Suspense>
+            <Chart
+              chartName={chart}
+              selectedScenarios={props.selectedScenarios}
+              showDifference={props.showDifference}
+              {...chartsInfo[chart]}
+            />
             <Card.Footer>
               <ChartLegend {...chartsInfo[chart]} />
             </Card.Footer>
