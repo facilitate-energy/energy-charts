@@ -81,7 +81,7 @@ const config = {
         { to: "/charts/group1/subgroup1", text: "Subgroup 1" },
         { to: "/charts/group1/subgroup2", text: "Subgroup 2" }
       ],
-      variant: "pills"
+      variant: "underscore"
     }
   ],
   headerNavLinks: [

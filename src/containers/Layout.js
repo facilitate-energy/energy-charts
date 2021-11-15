@@ -11,7 +11,7 @@ function Layout(props) {
         <Header navLinks={props.headerNavLinks} />
       </Row>
       <Suspense fallback={<PageLoading />}>
-        <Row className="m-0">
+        <Row className="mx-0 my-2">
           <Route path={props.routeWithSidebar}>
             <Sidebar
               scenarioList={props.scenarios}

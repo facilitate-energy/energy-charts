@@ -87,3 +87,26 @@ button:not(.collapsed) > .bar3 {
 button:focus:not(:focus-visible) {
   box-shadow: none;
 }
+
+.nav-underscore .nav-link {
+  padding: 0.5rem 0.2rem;
+  margin: 0 0.8rem;
+}
+
+.nav-underscore .nav-link.active {
+  color: #495057;
+  border-bottom: 2px solid;
+}
+
+.nav-underscore .nav-link:not(.active):hover {
+  color: #0a58ca;
+  border-bottom: 2px solid;
+}
+
+.nav-tabs .nav-link {
+  border-radius: 0rem;
+}
+
+.nav-tabs .active:first-child {
+  border-left: 1px solid transparent;
+}

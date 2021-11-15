@@ -7,10 +7,10 @@ function Charts(props) {
   return (
     <Row
       xs={"auto"}
-      className="charts g-2 m-sm-3 justify-content-center justify-content-md-start"
+      className="charts py-2 justify-content-center justify-content-md-start"
     >
       {props.charts.map((chart, idx) => (
-        <Col key={idx}>
+        <Col className="p-2" key={idx}>
           <Card>
             <Card.Header>{chart}</Card.Header>
             <Chart
