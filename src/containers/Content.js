@@ -1,6 +1,6 @@
 import React from "react";
 import { Route, Switch } from "react-router-dom";
-import { Col } from "react-bootstrap";
+import { Col, Button, ButtonGroup, Row } from "react-bootstrap";
 import { NavRow } from "../components";
 
 function Content(props) {
@@ -11,6 +11,17 @@ function Content(props) {
           <NavRow navLinks={nav.links} variant={nav.variant} />
         </Route>
       ))}
+
+      <Route path="/charts">
+        <Row className="d-md-none">
+          <ButtonGroup>
+            <Button> {props.selectedScenarios[0]} </Button>
+            <Button> + </Button>
+            <Button> {props.selectedScenarios[1]} </Button>
+            <Button> Options </Button>
+          </ButtonGroup>
+        </Row>
+      </Route>
 
       <Switch>
         {props.routes.map((route, index) => (
