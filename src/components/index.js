@@ -12,6 +12,7 @@ import NavRow from "./NavRow";
 import NavToggle from "./NavToggle";
 import NotFound from "./NotFound";
 import OffcanvasMenu from "./OffcanvasMenu";
+import OffcanvasMenuDifference from "./OffcanvasMenuDifference";
 import OptionList from "./OptionList";
 import Page from "./Page";
 import PageLoading from "./PageLoading";
@@ -31,6 +32,7 @@ export {
   NavToggle,
   NotFound,
   OffcanvasMenu,
+  OffcanvasMenuDifference,
   OptionList,
   Page,
   PageLoading

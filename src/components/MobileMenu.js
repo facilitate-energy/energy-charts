@@ -1,6 +1,6 @@
 import React from "react";
 import { Row, Col, ButtonGroup } from "react-bootstrap";
-import { OffcanvasMenu } from "../components";
+import { OffcanvasMenu, OffcanvasMenuDifference } from "../components";
 
 function MobileMenu(props) {
   const { scenarioList } = props;
@@ -22,7 +22,7 @@ function MobileMenu(props) {
 
   return (
     <Row className="pb-2 d-md-none sticky-top">
-      <Col className="align-self-center text-center">
+      <Col className="text-center">
         <ButtonGroup>
           {props.selectedScenarios.map((scenario, idx) => (
             <OffcanvasMenu
@@ -33,6 +33,14 @@ function MobileMenu(props) {
               {...menuButtons[idx]}
             />
           ))}
+          {props.selectedScenarios[1] && (
+            <OffcanvasMenuDifference
+              title="Options"
+              placement="top"
+              showDifference={props.showDifference}
+              setShowDifference={props.setShowDifference}
+            />
+          )}
         </ButtonGroup>
       </Col>
     </Row>
