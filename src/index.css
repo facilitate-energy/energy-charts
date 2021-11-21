@@ -11,16 +11,19 @@ aside {
   min-width: 250px;
 }
 
-ul.main-scenario-list li {
+ul.main-scenario-list li,
+ul.offcanvas-scenario-list li {
   border: unset;
 }
 
-ul.main-scenario-list li:hover {
+ul.main-scenario-list li:hover,
+ul.offcanvas-scenario-list li:hover {
   cursor: pointer;
   background-color: #b3b3b3;
 }
 
-ul.main-scenario-list li.active {
+ul.main-scenario-list li.active,
+ul.offcanvas-scenario-list li.active {
   background-color: maroon;
 }
 
@@ -109,4 +112,19 @@ button:focus:not(:focus-visible) {
 
 .nav-tabs .active:first-child {
   border-left: 1px solid transparent;
+}
+
+.offcanvas-menu-button {
+  border-color: maroon;
+  background-color: maroon;
+}
+
+.offcanvas-menu-button:focus {
+  border-color: maroon;
+  background-color: maroon;
+}
+
+.offcanvas-menu-button:hover {
+  border-color: #730000;
+  background-color: #730000;
 }

@@ -2,7 +2,11 @@ import React from "react";
 import { ListGroup } from "react-bootstrap";
 
 function List(props) {
-  const { items, selectedItem, onSelection } = props;
+  const { noneItem, onSelection } = props;
+
+  const items = noneItem ? ["none"].concat(props.items) : props.items;
+  const selectedItem =
+    noneItem && !props.selectedItem ? "none" : props.selectedItem;
 
   return (
     <>

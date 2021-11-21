@@ -3,8 +3,6 @@ import { FloatingLabel, Form, ListGroup, Collapse } from "react-bootstrap";
 import { List, OptionList } from "../components";
 
 function Menu(props) {
-  //const scenarioList = props.scenarioList.reduce()
-
   const updateCompareScenario = (e) => {
     if (e.target.value !== "None") {
       props.setCompareScenario(e.target.value);

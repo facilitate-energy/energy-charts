@@ -1,27 +1,20 @@
 import React from "react";
 import { Route, Switch } from "react-router-dom";
-import { Col, Button, ButtonGroup, Row } from "react-bootstrap";
-import { NavRow } from "../components";
+import { Col } from "react-bootstrap";
+import { NavRow, MobileMenu } from "../components";
 
 function Content(props) {
   return (
     <Col as="main">
+      <Route path="/charts">
+        <MobileMenu {...props} />
+      </Route>
+
       {props.contentNavs.map((nav, index) => (
         <Route key={index} path={nav.path}>
           <NavRow navLinks={nav.links} variant={nav.variant} />
         </Route>
       ))}
-
-      <Route path="/charts">
-        <Row className="d-md-none">
-          <ButtonGroup>
-            <Button> {props.selectedScenarios[0]} </Button>
-            <Button> + </Button>
-            <Button> {props.selectedScenarios[1]} </Button>
-            <Button> Options </Button>
-          </ButtonGroup>
-        </Row>
-      </Route>
 
       <Switch>
         {props.routes.map((route, index) => (

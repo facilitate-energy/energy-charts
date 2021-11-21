@@ -24,8 +24,12 @@ function Layout(props) {
           </Route>
           <Content
             routes={props.routes}
+            scenarioList={props.scenarios}
             selectedScenarios={props.selectedScenarios}
             showDifference={props.showDifference}
+            setMainScenario={props.setMainScenario}
+            setCompareScenario={props.setCompareScenario}
+            setShowDifference={props.setShowDifference}
             contentNavs={props.contentNavs}
           />
         </Row>
