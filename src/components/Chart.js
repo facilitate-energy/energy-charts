@@ -55,9 +55,10 @@ function Chart(props) {
     xGridMarks
   );
 
-  const chartData = showDifference
-    ? [calculateDifference([mainScenarioData, compareScenarioData])]
-    : [mainScenarioData, compareScenarioData];
+  const chartData =
+    showDifference && selectedScenarios[1]
+      ? [calculateDifference([mainScenarioData, compareScenarioData])]
+      : [mainScenarioData, compareScenarioData];
 
   const getTotal = (data, period) => {
     return data.reduce((total, currentSeries) => {

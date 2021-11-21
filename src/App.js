@@ -1,20 +1,22 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Layout } from "./containers";
 import config from "./config";
 
 function App() {
   const [mainScenario, setMainScenario] = useState(config.defaultScenarioGroup);
-
   const [compareScenario, setCompareScenario] = useState(null);
-
   const [showDifference, setShowDifference] = useState(false);
 
-  const selectedScenarios = [mainScenario, compareScenario];
+  useEffect(() => {
+    if (!compareScenario) {
+      setShowDifference(false);
+    }
+  }, [compareScenario]);
 
   return (
     <Layout
       {...config}
-      selectedScenarios={selectedScenarios}
+      selectedScenarios={[mainScenario, compareScenario]}
       showDifference={showDifference}
       setMainScenario={setMainScenario}
       setCompareScenario={setCompareScenario}

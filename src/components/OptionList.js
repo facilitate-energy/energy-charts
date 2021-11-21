@@ -1,7 +1,9 @@
 import React from "react";
 
 function OptionList(props) {
-  const { items } = props;
+  const { noneItem } = props;
+
+  const items = noneItem ? ["none"].concat(props.items) : props.items;
 
   return (
     <>

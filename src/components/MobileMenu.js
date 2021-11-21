@@ -3,8 +3,7 @@ import { Row, Col, ButtonGroup } from "react-bootstrap";
 import { OffcanvasMenu } from "../components";
 
 function MobileMenu(props) {
-  //Could use/create pluck instead
-  const scenarioList = props.scenarioList.map((scenario) => scenario.name);
+  const { scenarioList } = props;
 
   const menuButtons = [
     {

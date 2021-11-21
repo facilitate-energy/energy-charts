@@ -5,6 +5,8 @@ import { Content, Footer, Header, Sidebar } from "../containers";
 import { PageLoading } from "../components";
 
 function Layout(props) {
+  const scenarioList = props.scenarios.map((scenario) => scenario.name);
+
   return (
     <Container fluid="ms" className="vh-100 d-flex flex-column">
       <Row as="header" className="mb-auto mx-0">
@@ -14,7 +16,7 @@ function Layout(props) {
         <Row className="mx-0 my-2">
           <Route path={props.routeWithSidebar}>
             <Sidebar
-              scenarioList={props.scenarios}
+              scenarioList={scenarioList}
               selectedScenarios={props.selectedScenarios}
               showDifference={props.showDifference}
               setMainScenario={props.setMainScenario}
@@ -24,7 +26,7 @@ function Layout(props) {
           </Route>
           <Content
             routes={props.routes}
-            scenarioList={props.scenarios}
+            scenarioList={scenarioList}
             selectedScenarios={props.selectedScenarios}
             showDifference={props.showDifference}
             setMainScenario={props.setMainScenario}
