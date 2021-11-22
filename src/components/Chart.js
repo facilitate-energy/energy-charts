@@ -1,13 +1,14 @@
 import React from "react";
 import {
-  VictoryChart,
   VictoryAxis,
-  VictoryLabel,
   VictoryBar,
-  VictoryStack,
+  VictoryChart,
+  VictoryContainer,
   VictoryGroup,
-  VictoryTooltip,
-  VictoryPortal
+  VictoryLabel,
+  VictoryPortal,
+  VictoryStack,
+  VictoryTooltip
 } from "victory";
 import useFetch from "../hooks/useFetch";
 import calculateDifference from "../utils/calculateDifference";
@@ -71,7 +72,17 @@ function Chart(props) {
 
   return (
     <>
-      <VictoryChart domainPadding={{ x: 20 }} domain={chartDomain}>
+      <VictoryChart
+        domainPadding={{ x: 20 }}
+        domain={chartDomain}
+        containerComponent={
+          <VictoryContainer
+            style={{
+              touchAction: "auto"
+            }}
+          />
+        }
+      >
         <VictoryPortal>
           <VictoryAxis
             tickFormat={(t) => t.toString()}
