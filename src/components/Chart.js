@@ -29,18 +29,12 @@ function Chart(props) {
 
   const chartDomain = showDifference ? null : { y: [minY, maxY] };
 
-  const getDataPath = (scenario, chart) => {
-    if (scenario && chart) {
-      return `/data/${scenario}/${chart}.json`;
-    } else {
-      return "";
-    }
-  };
-
-  let mainScenarioData = useFetch(getDataPath(selectedScenarios[0], chartName));
-  let compareScenarioData = useFetch(
-    getDataPath(selectedScenarios[1], chartName)
+  const urls = selectedScenarios.map(
+    (scenario) => scenario && `/data/${scenario}/${chartName}.json`
   );
+
+  let mainScenarioData = useFetch(urls[0]);
+  let compareScenarioData = useFetch(urls[1]);
 
   mainScenarioData = normaliseData(
     mainScenarioData,
