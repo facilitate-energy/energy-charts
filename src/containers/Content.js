@@ -1,39 +1,38 @@
 import React from "react";
-import { Route, Switch } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import { Col } from "react-bootstrap";
 import { NavRow, MobileMenu } from "../components";
 
 function Content(props) {
   return (
     <Col as="main">
-      <Route path="/charts">
-        <MobileMenu {...props} />
-      </Route>
+      <Routes>
+        <Route path="/charts/*" element={<MobileMenu {...props} />} />
+      </Routes>
 
       {props.contentNavs.map((nav, index) => (
-        <Route key={index} path={nav.path}>
-          <NavRow navLinks={nav.links} variant={nav.variant} />
-        </Route>
+        <Routes key={index}>
+          <Route
+            path={nav.path}
+            element={<NavRow navLinks={nav.links} variant={nav.variant} />}
+          />
+        </Routes>
       ))}
-
-      <Switch>
+      <Routes>
         {props.routes.map((route, index) => (
           <Route
             key={index}
             path={route.path}
-            exact={route.exact}
-            children={
+            element={
               <route.component
-                to={route.redirectPath}
-                page={route.page}
-                charts={route.charts}
+                {...route.props}
                 selectedScenarios={props.selectedScenarios}
                 showDifference={props.showDifference}
               />
             }
           />
         ))}
-      </Switch>
+      </Routes>
     </Col>
   );
 }
