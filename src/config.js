@@ -1,5 +1,5 @@
 import React from "react";
-import { Redirect } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 
 const Charts = React.lazy(() => import("./components/Charts"));
 const Page = React.lazy(() => import("./components/Page"));
@@ -27,48 +27,51 @@ const config = {
   defaultScenarioGroup: "Scenario 1",
   routes: [
     {
-      exact: true,
       path: "/about",
       component: Page,
-      page: "about"
+      props: { page: "about" }
     },
     {
-      exact: true,
       path: "/charts/group1/subgroup1",
       component: Charts,
-      charts: ["chart 1", "chart 2", "chart 3", "chart 4"]
+      props: { charts: ["chart 1", "chart 2", "chart 3", "chart 4"] }
     },
     {
-      exact: true,
       path: "/charts/group1/subgroup2",
       component: Charts,
-      charts: ["chart 1", "chart 2", "chart 3", "chart 4"]
+      props: { charts: ["chart 1", "chart 4", "chart 3", "chart 2"] }
     },
     {
-      exact: true,
       path: "/charts/group2",
       component: Charts,
-      charts: ["chart 1", "chart 2", "chart 3", "chart 4"]
+      props: {
+        charts: ["chart 1", "chart 2", "chart 3", "chart 4"]
+      }
     },
     {
-      path: "/charts/group2/",
-      redirectPath: "/charts/group2",
-      component: Redirect
+      path: "/charts/group1",
+      component: Navigate,
+      props: { replace: true, to: "/charts/group1/subgroup1" }
     },
-    {
+     {
       path: "/charts/",
-      redirectPath: "/charts/group1/subgroup1",
-      component: Redirect
+      component: Navigate,
+      props: { replace: true, to: "/charts/group1/subgroup1" }
     },
-    { exact: true, path: "/", redirectPath: "/about", component: Redirect },
     {
+      path: "/",
+      component: Navigate,
+      props: { replace: true, to: "/about" }
+    },
+    {
+      path: "*",
       component: PageNotFound
     }
   ],
-  routeWithSidebar: "/charts",
+  routeWithSidebar: "/charts/*",
   contentNavs: [
     {
-      path: "/charts",
+      path: "/charts/*",
       links: [
         { to: "/charts/group1", text: "Group 1" },
         { to: "/charts/group2", text: "Group 2" }
@@ -76,7 +79,7 @@ const config = {
       variant: "tabs"
     },
     {
-      path: "/charts/group1",
+      path: "/charts/group1/*",
       links: [
         { to: "/charts/group1/subgroup1", text: "Subgroup 1" },
         { to: "/charts/group1/subgroup2", text: "Subgroup 2" }
