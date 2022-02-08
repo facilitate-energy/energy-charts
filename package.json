@@ -48,7 +48,7 @@
     "git-format-staged": "^2.1.2",
     "husky": "^7.0.4",
     "prettier": "^2.5.1",
-    "react-scripts": "4.0.3"
+    "react-scripts": "^5.0.0"
   },
   "prettier": {
     "trailingComma": "none",
