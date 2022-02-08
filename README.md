@@ -36,7 +36,7 @@ Follow this [guide](https://www.netlify.com/blog/2016/09/29/a-step-by-step-guide
 
 ## License
 
-Copyright 2021 Facilitate Energy Ltd.
+Copyright 2021-2022 Facilitate Energy Ltd.
 
 Energy Charts is licensed under the Apache License, Version 2.0.
 
