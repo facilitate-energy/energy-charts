@@ -36,6 +36,7 @@ function OffcanvasMenu(props) {
           >
             <List
               items={props.items}
+              itemTitles={props.itemTitles}
               selectedItem={props.selectedItem}
               noneItem={props.noneItem}
               onSelection={handleSelection}

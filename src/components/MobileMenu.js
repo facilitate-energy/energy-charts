@@ -1,6 +1,7 @@
 import React from "react";
 import { Row, Col, ButtonGroup } from "react-bootstrap";
 import { OffcanvasMenu, OffcanvasMenuDifference } from "../components";
+import scenarioTitles from "../specs/scenarioTitles";
 
 function MobileMenu(props) {
   const { scenarioList } = props;
@@ -29,6 +30,7 @@ function MobileMenu(props) {
               key={idx}
               name={scenario}
               items={scenarioList}
+              itemTitles={scenarioTitles}
               selectedItem={scenario}
               {...menuButtons[idx]}
             />
