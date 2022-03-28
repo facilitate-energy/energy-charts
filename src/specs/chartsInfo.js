@@ -28,6 +28,7 @@ const chartsInfo = {
   "chart 2": {
     seriesNames: ["Series 1", "Series 2", "Series 3", "Series 4"],
     colorScale: ["#00429d", "#4771b2", "#73a2c6", "#a5d5d8"],
+    height: 30,
     unit: "Unit",
     maxY: 6,
     minY: 0,
@@ -36,6 +37,7 @@ const chartsInfo = {
   "chart 3": {
     seriesNames: ["Series 1", "Series 2", "Series 3", "Series 4"],
     colorScale: ["#00429d", "#4771b2", "#73a2c6", "#a5d5d8"],
+    itemsPerRow: 2,
     unit: "Unit",
     maxY: 5,
     minY: 0,

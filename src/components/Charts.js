@@ -13,9 +13,7 @@ function Charts(props) {
       {props.charts.map((chart, idx) => (
         <Col className="p-2" key={idx}>
           <Card>
-            <Card.Header>
-              {chartsTitles[chart] ? chartsTitles[chart] : chart}
-            </Card.Header>
+            <Card.Header>{chartsTitles[chart] || chart}</Card.Header>
             <Chart
               chartName={chart}
               selectedScenarios={props.selectedScenarios}
