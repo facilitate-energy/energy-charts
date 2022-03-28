@@ -1,6 +1,7 @@
 import React from "react";
 import { FloatingLabel, Form, ListGroup, Collapse } from "react-bootstrap";
 import { List, OptionList } from "../components";
+import scenarioTitles from "../specs/scenarioTitles";
 
 function Menu(props) {
   const { scenarioList, selectedScenarios } = props;
@@ -25,6 +26,7 @@ function Menu(props) {
       <ListGroup as="ul" variant="flush" className="main-scenario-list">
         <List
           items={scenarioList}
+          itemTitles={scenarioTitles}
           selectedItem={selectedScenarios[0]}
           onSelection={props.setMainScenario}
         />
@@ -37,7 +39,11 @@ function Menu(props) {
             onChange={updateCompareScenario}
             value={selectedScenarios[1] ? selectedScenarios[1] : "none"}
           >
-            <OptionList items={scenarioList} noneItem={true} />
+            <OptionList
+              items={scenarioList}
+              itemTitles={scenarioTitles}
+              noneItem={true}
+            />
           </Form.Select>
         </FloatingLabel>
 

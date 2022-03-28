@@ -91,6 +91,14 @@ button:focus:not(:focus-visible) {
   box-shadow: none;
 }
 
+@media only screen and (max-width: 768px) {
+  nav.nav-tabs, nav.nav-underscore {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    overflow-y: hidden;
+  }
+}
+
 .nav-underscore .nav-link {
   padding: 0.5rem 0.2rem;
   margin: 0 0.8rem;

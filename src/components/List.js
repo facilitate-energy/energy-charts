@@ -2,7 +2,7 @@ import React from "react";
 import { ListGroup } from "react-bootstrap";
 
 function List(props) {
-  const { noneItem, onSelection } = props;
+  const { noneItem, onSelection, itemTitles } = props;
 
   const items = noneItem ? ["none"].concat(props.items) : props.items;
   const selectedItem =
@@ -20,7 +20,7 @@ function List(props) {
             onSelection(item);
           }}
         >
-          {item}
+          {itemTitles[item] || item}
         </ListGroup.Item>
       ))}
     </>
