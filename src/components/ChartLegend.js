@@ -1,5 +1,6 @@
 import React from "react";
 import { VictoryLegend } from "victory";
+import seriesTitles from "../specs/seriesTitles";
 
 function ChartLegend({ seriesNames, colorScale }) {
   return (
@@ -7,7 +8,7 @@ function ChartLegend({ seriesNames, colorScale }) {
       <VictoryLegend
         orientation="horizontal"
         data={seriesNames.map((seriesName) => ({
-          name: seriesName
+          name: seriesTitles[seriesName] ? seriesTitles[seriesName] : seriesName
         }))}
         itemsPerRow={4}
         height={60}
