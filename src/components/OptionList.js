@@ -1,7 +1,7 @@
 import React from "react";
 
 function OptionList(props) {
-  const { noneItem } = props;
+  const { noneItem, itemTitles } = props;
 
   const items = noneItem ? ["none"].concat(props.items) : props.items;
 
@@ -9,7 +9,7 @@ function OptionList(props) {
     <>
       {items.map((item, idx) => (
         <option key={idx} value={item}>
-          {item}
+          {itemTitles[item] || item}
         </option>
       ))}
     </>
