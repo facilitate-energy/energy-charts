@@ -17,12 +17,12 @@ function OffcanvasMenu(props) {
     }
   };
 
-  const buttonName = props.name ? props.name : "+";
+  const buttonName = props.name || "+";
 
   return (
     <>
       <Button className="offcanvas-menu-button" onClick={handleShow}>
-        {buttonName}
+        {props.itemTitles[buttonName] || buttonName}
       </Button>
       <Offcanvas show={show} onHide={handleClose} placement={props.placement}>
         <Offcanvas.Header closeButton>
