@@ -17,7 +17,7 @@ function ChartLegend({
         }))}
         itemsPerRow={itemsPerRow}
         height={height}
-        gutter={30}
+        gutter={25}
         colorScale={colorScale}
       />
     </>

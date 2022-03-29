@@ -3,6 +3,8 @@ import { Card, Col, Row } from "react-bootstrap";
 import { Chart, ChartLegend } from "../components";
 import chartsInfo from "../specs/chartsInfo";
 import chartsTitles from "../specs/chartsTitles";
+import seriesTitles from "../specs/seriesTitles";
+import scenarioTitles from "../specs/scenarioTitles";
 
 function Charts(props) {
   return (
@@ -17,7 +19,9 @@ function Charts(props) {
             <Chart
               chartName={chart}
               selectedScenarios={props.selectedScenarios}
+              scenarioTitles={scenarioTitles}
               showDifference={props.showDifference}
+              seriesTitles={seriesTitles}
               {...chartsInfo[chart]}
             />
             <Card.Footer>

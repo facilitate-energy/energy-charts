@@ -1,6 +1,6 @@
 {
   "name": "energy-charts",
-  "version": "0.3.3",
+  "version": "0.3.4",
   "private": true,
   "dependencies": {
     "bootstrap": "^5.1.3",
