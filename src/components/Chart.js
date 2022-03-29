@@ -17,10 +17,12 @@ import normaliseData from "../utils/normaliseData";
 function Chart(props) {
   const {
     selectedScenarios,
+    scenarioTitles,
     chartName,
     showDifference,
     colorScale,
     seriesNames,
+    seriesTitles,
     unit,
     maxY,
     minY,
@@ -100,11 +102,17 @@ function Chart(props) {
                       labels={({ datum }) =>
                         `${
                           showDifference
-                            ? scenario.name[0] + " - " + scenario.name[1]
-                            : scenario.name
+                            ? (scenarioTitles[scenario.name[0]] ||
+                                scenario.name[0]) +
+                                " - " +
+                                scenarioTitles[scenario.name[1]] ||
+                              scenario.name[1]
+                            : scenarioTitles[scenario.name] || scenario.name
                         }
                         ${datum[0]}
-                        ${series.seriesName}: ${datum[1]} ${unit}
+                        ${
+                          seriesTitles[series.seriesName] || series.seriesName
+                        }: ${datum[1]} ${unit}
                         Total: ${getTotal(scenario.data, datum[0])} ${unit}`
                       }
                       x={0}
