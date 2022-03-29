@@ -58,6 +58,7 @@ ul.offcanvas-scenario-list li.active {
 button.navbar-toggler {
   border: 0px;
   border-color: unset;
+  padding-right: 0;
 }
 
 button > div.hamburger {
