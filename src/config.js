@@ -53,7 +53,7 @@ const config = {
       component: Navigate,
       props: { replace: true, to: "/charts/group1/subgroup1" }
     },
-     {
+    {
       path: "/charts/",
       component: Navigate,
       props: { replace: true, to: "/charts/group1/subgroup1" }
