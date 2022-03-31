@@ -1,26 +1,42 @@
 import React from "react";
-import { VictoryLegend } from "victory";
+import { Row, Col } from "react-bootstrap";
 import seriesTitles from "../specs/seriesTitles";
 
-function ChartLegend({
-  seriesNames,
-  colorScale,
-  itemsPerRow = 4,
-  height = 60
-}) {
+function ChartLegend({ seriesNames, colorScale, itemsPerRow = 4 }) {
   return (
-    <>
-      <VictoryLegend
-        orientation="horizontal"
-        data={seriesNames.map((seriesName) => ({
-          name: seriesTitles[seriesName] || seriesName
-        }))}
-        itemsPerRow={itemsPerRow}
-        height={height}
-        gutter={25}
-        colorScale={colorScale}
-      />
-    </>
+    <Row xs="auto" style={{ maxWidth: 440 }}>
+      {seriesNames.map((seriesName, idx) => (
+        <Col className="chart-legend" key={idx}>
+          <Row xs={2} className="align-items-center">
+            <Col xs="auto">
+              <div
+                className="colour"
+                style={{
+                  backgroundColor: colorScale[idx],
+                  borderRadius: "50%",
+                  width: 12,
+                  height: 12,
+                  left: 0,
+                  top: 0
+                }}
+              />
+            </Col>
+            <Col xs="auto" className="ps-0">
+              <span
+                style={{
+                  fontFamily: "Gill Sans, Seravek, Trebuchet MS, sans-serif",
+                  fontSize: 14,
+                  letterSpacing: "normal"
+                }}
+              >
+                {" "}
+                {seriesTitles[seriesName] || seriesName}{" "}
+              </span>
+            </Col>
+          </Row>
+        </Col>
+      ))}
+    </Row>
   );
 }
 
