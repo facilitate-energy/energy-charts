@@ -1,12 +1,18 @@
 import { useState, useEffect } from "react";
 
-function useFetch(path) {
+function useFetch(url) {
   const [content, setContent] = useState(null);
+  const [isFetching, setStatus] = useState(true);
 
   useEffect(() => {
+    let isCancelled = false;
+    if (!url) {
+      setStatus(false);
+      return;
+    }
     const fetchData = async () => {
       try {
-        const response = await fetch(path);
+        const response = await fetch(url);
         let data = null;
         const contentType = await response.headers.get("content-type");
         if (contentType.includes("application/json")) {
@@ -16,17 +22,26 @@ function useFetch(path) {
         } else {
           data = null;
         }
-        setContent(data);
+        if (!isCancelled) {
+          setContent(data);
+          setStatus(false);
+        }
       } catch (error) {
-        setContent(null);
+        if (!isCancelled) {
+          setContent(null);
+          setStatus(false);
+        }
         console.error(error);
       }
     };
 
     fetchData();
-  }, [path]);
+    return () => {
+      isCancelled = true;
+    };
+  }, [url]);
 
-  return content;
+  return [isFetching, content];
 }
 
 export default useFetch;
