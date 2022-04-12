@@ -26,13 +26,14 @@ function Chart(props) {
     unit,
     maxY,
     minY,
-    xGridMarks
+    xGridMarks,
+    basePath
   } = props;
 
   const chartDomain = showDifference ? null : { y: [minY, maxY] };
 
   const urls = selectedScenarios.map(
-    (scenario) => scenario && `/data/${scenario}/${chartName}.json`
+    (scenario) => scenario && `${basePath}/${scenario}/${chartName}.json`
   );
 
   let mainScenarioData = useFetch(urls[0]);

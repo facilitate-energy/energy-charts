@@ -6,6 +6,7 @@ function App() {
   const [mainScenario, setMainScenario] = useState(config.defaultScenarioGroup);
   const [compareScenario, setCompareScenario] = useState(null);
   const [showDifference, setShowDifference] = useState(false);
+  const [basePath, setBasePath] = useState("");
 
   useEffect(() => {
     if (!compareScenario) {
@@ -16,8 +17,10 @@ function App() {
   return (
     <Layout
       {...config}
+      basePath={basePath}
       selectedScenarios={[mainScenario, compareScenario]}
       showDifference={showDifference}
+      setBasePath={setBasePath}
       setMainScenario={setMainScenario}
       setCompareScenario={setCompareScenario}
       setShowDifference={setShowDifference}

@@ -6,7 +6,8 @@ import rehypeRaw from "rehype-raw";
 import useFetchText from "../hooks/useFetch";
 
 function Page(props) {
-  const content = useFetchText(`/pages/${props.page}.md`);
+  const { basePath, page } = props;
+  const content = useFetchText(`${basePath}/pages/${page}.md`);
 
   return (
     <Row className="page m-0 justify-content-center">
