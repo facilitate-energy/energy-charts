@@ -6,9 +6,10 @@ import rehypeRaw from "rehype-raw";
 import useFetchText from "../hooks/useFetch";
 
 function Page(props) {
-  const { basePath, page } = props;
+  const { basePath, page, cache } = props;
   const [contentIsLoading, content] = useFetchText(
-    `${basePath}/pages/${page}.md`
+    `${basePath}/pages/${page}.md`,
+    cache
   );
 
   return (

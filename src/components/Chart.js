@@ -27,7 +27,8 @@ function Chart(props) {
     maxY,
     minY,
     xGridMarks,
-    basePath
+    basePath,
+    cache
   } = props;
 
   const chartDomain = showDifference ? null : { y: [minY, maxY] };
@@ -36,8 +37,11 @@ function Chart(props) {
     (scenario) => scenario && `${basePath}/${scenario}/${chartName}.json`
   );
 
-  let [mainScenarioDataLoading, mainScenarioData] = useFetch(urls[0]);
-  let [compareScenarioDataLoading, compareScenarioData] = useFetch(urls[1]);
+  let [mainScenarioDataLoading, mainScenarioData] = useFetch(urls[0], cache);
+  let [compareScenarioDataLoading, compareScenarioData] = useFetch(
+    urls[1],
+    cache
+  );
 
   if (!mainScenarioDataLoading) {
     mainScenarioData = normaliseData(

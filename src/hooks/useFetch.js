@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-function useFetch(url) {
+function useFetch(url, cache) {
   const [content, setContent] = useState(null);
   const [isFetching, setStatus] = useState(true);
 
@@ -10,28 +10,36 @@ function useFetch(url) {
       setStatus(false);
       return;
     }
+
     const fetchData = async () => {
-      try {
-        const response = await fetch(url);
-        let data = null;
-        const contentType = await response.headers.get("content-type");
-        if (contentType.includes("application/json")) {
-          data = await response.json();
-        } else if (contentType.includes("markdown")) {
-          data = await response.text();
-        } else {
-          data = null;
+      if (cache.current[url]) {
+        const data = cache.current[url];
+        setContent(data);
+        setStatus(false);
+      } else {
+        try {
+          const response = await fetch(url);
+          let data = null;
+          const contentType = await response.headers.get("content-type");
+          if (contentType.includes("application/json")) {
+            data = await response.json();
+          } else if (contentType.includes("markdown")) {
+            data = await response.text();
+          } else {
+            data = null;
+          }
+          if (!isCancelled) {
+            cache.current[url] = data;
+            setContent(data);
+            setStatus(false);
+          }
+        } catch (error) {
+          if (!isCancelled) {
+            setContent(null);
+            setStatus(false);
+          }
+          console.error(error);
         }
-        if (!isCancelled) {
-          setContent(data);
-          setStatus(false);
-        }
-      } catch (error) {
-        if (!isCancelled) {
-          setContent(null);
-          setStatus(false);
-        }
-        console.error(error);
       }
     };
 
@@ -39,7 +47,7 @@ function useFetch(url) {
     return () => {
       isCancelled = true;
     };
-  }, [url]);
+  }, [url, cache]);
 
   return [isFetching, content];
 }

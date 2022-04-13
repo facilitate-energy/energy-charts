@@ -27,6 +27,7 @@ function Content(props) {
               <route.component
                 {...route.props}
                 basePath={props.basePath}
+                cache={props.cache}
                 selectedScenarios={props.selectedScenarios}
                 showDifference={props.showDifference}
                 setBasePath={props.setBasePath}
