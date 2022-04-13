@@ -33,6 +33,7 @@ function Layout(props) {
             routes={props.routes}
             scenarioList={scenarioList}
             basePath={props.basePath}
+            cache={props.cache}
             selectedScenarios={props.selectedScenarios}
             showDifference={props.showDifference}
             setBasePath={props.setBasePath}
