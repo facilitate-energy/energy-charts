@@ -28,8 +28,26 @@ function Chart(props) {
     minY,
     xGridMarks,
     basePath,
-    cache
+    cache,
+    locale
   } = props;
+
+  const numberStyle = {
+    maximumSignificantDigits: 3
+  };
+
+  const yearStyle = {
+    useGrouping: false
+  };
+
+  const yGridStyle = {
+    maximumSignificantDigits: 3,
+    notation: "compact"
+  };
+
+  const formattedNumber = (number, locale, options) => {
+    return Intl.NumberFormat(locale, options).format(number);
+  };
 
   const chartDomain = showDifference ? null : { y: [minY, maxY] };
 
@@ -92,11 +110,19 @@ function Chart(props) {
       >
         <VictoryPortal>
           <VictoryAxis
-            tickFormat={(t) => t.toString()}
+            tickFormat={(t) => formattedNumber(t, locale, yearStyle)}
             tickValues={xGridMarks}
           />
         </VictoryPortal>
         <VictoryAxis
+          tickFormat={(t) =>
+            t > 0.01
+              ? formattedNumber(t, locale, yGridStyle)
+              : formattedNumber(t, locale, {
+                  ...yGridStyle,
+                  notation: "scientific"
+                })
+          }
           dependentAxis
           label={unit}
           axisLabelComponent={<VictoryLabel y={35} x={30} angle={0} />}
@@ -121,11 +147,15 @@ function Chart(props) {
                                 scenario.name[1]
                               : scenarioTitles[scenario.name] || scenario.name
                           }
-                        ${datum[0]}
+                        ${formattedNumber(datum[0], locale, yearStyle)}
                         ${
                           seriesTitles[series.seriesName] || series.seriesName
-                        }: ${datum[1]} ${unit}
-                        Total: ${getTotal(scenario.data, datum[0])} ${unit}`
+                        }: ${formattedNumber(datum[1], locale)} ${unit}
+                        Total: ${formattedNumber(
+                          getTotal(scenario.data, datum[0]),
+                          locale,
+                          numberStyle
+                        )} ${unit}`
                         }
                         x={0}
                         y={1}

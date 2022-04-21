@@ -13,7 +13,7 @@ function Page(props) {
   );
 
   return (
-    <Row className="page m-0 justify-content-center">
+    <Row className="page m-0 justify-content-center align-items-center h-100">
       <Col sm={10} md={8} lg={7} xl={6} xxl={5}>
         {!contentIsLoading && (
           <Markdown

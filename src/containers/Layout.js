@@ -9,11 +9,11 @@ function Layout(props) {
 
   return (
     <Container fluid="ms" className="vh-100 d-flex flex-column">
-      <Row as="header" className="mb-auto mx-0">
+      <Row as="header" className="mb-3 mx-0">
         <Header navLinks={props.headerNavLinks} />
       </Row>
       <Suspense fallback={<PageLoading />}>
-        <Row className="mx-0 my-2">
+        <Row className="mx-0 flex-grow-1">
           <Routes>
             <Route
               path={props.routeWithSidebar}
@@ -44,7 +44,7 @@ function Layout(props) {
           />
         </Row>
       </Suspense>
-      <Row as="footer" className="mt-auto mx-0">
+      <Row as="footer" className="mt-3 mx-0">
         <Footer />
       </Row>
     </Container>
