@@ -150,7 +150,11 @@ function Chart(props) {
                         ${formattedNumber(datum[0], locale, yearStyle)}
                         ${
                           seriesTitles[series.seriesName] || series.seriesName
-                        }: ${formattedNumber(datum[1], locale)} ${unit}
+                        }: ${formattedNumber(
+                            datum[1],
+                            locale,
+                            numberStyle
+                          )} ${unit}
                         Total: ${formattedNumber(
                           getTotal(scenario.data, datum[0]),
                           locale,
