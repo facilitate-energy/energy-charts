@@ -1,4 +1,5 @@
 import React from "react";
+import { useParams } from "react-router-dom";
 import { Row, Col } from "react-bootstrap";
 import Markdown from "react-markdown";
 import remarkGfm from "remark-gfm";
@@ -6,9 +7,12 @@ import rehypeRaw from "rehype-raw";
 import useFetchText from "../hooks/useFetch";
 
 function Page(props) {
-  const { basePath, page, cache } = props;
+  let { pageId } = useParams();
+  console.log(pageId);
+
+  const { basePath, cache } = props;
   const [contentIsLoading, content] = useFetchText(
-    `${basePath}/pages/${page}.md`,
+    `${basePath}/pages/${pageId || "about"}.md`,
     cache
   );
 

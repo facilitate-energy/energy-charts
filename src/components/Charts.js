@@ -1,12 +1,14 @@
 import React from "react";
+import { useParams } from "react-router-dom";
 import { Card, Col, Row } from "react-bootstrap";
 import { Chart, ChartLegend } from "../components";
 import chartsInfo from "../specs/chartsInfo";
 import chartsTitles from "../specs/chartsTitles";
-import seriesTitles from "../specs/seriesTitles";
-import scenarioTitles from "../specs/scenarioTitles";
 
 function Charts(props) {
+  let { chartsId } = useParams;
+  console.log(chartsId);
+
   return (
     <Row
       xs={"auto"}
@@ -16,16 +18,7 @@ function Charts(props) {
         <Col className="p-2" key={idx}>
           <Card>
             <Card.Header>{chartsTitles[chart] || chart}</Card.Header>
-            <Chart
-              chartName={chart}
-              selectedScenarios={props.selectedScenarios}
-              scenarioTitles={scenarioTitles}
-              showDifference={props.showDifference}
-              seriesTitles={seriesTitles}
-              basePath={`${props.basePath}/data`}
-              cache={props.cache}
-              {...chartsInfo[chart]}
-            />
+            <Chart chartName={chart} {...props} {...chartsInfo[chart]} />
             <Card.Footer>
               <ChartLegend {...chartsInfo[chart]} />
             </Card.Footer>

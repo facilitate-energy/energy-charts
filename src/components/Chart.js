@@ -13,16 +13,16 @@ import {
 import useFetch from "../hooks/useFetch";
 import calculateDifference from "../utils/calculateDifference";
 import normaliseData from "../utils/normaliseData";
+import seriesTitles from "../specs/seriesTitles";
+import scenarioTitles from "../specs/scenarioTitles";
 
 function Chart(props) {
   const {
     selectedScenarios,
-    scenarioTitles,
     chartName,
     showDifference,
     colorScale,
     seriesNames,
-    seriesTitles,
     unit,
     maxY,
     minY,
@@ -52,7 +52,7 @@ function Chart(props) {
   const chartDomain = showDifference ? null : { y: [minY, maxY] };
 
   const urls = selectedScenarios.map(
-    (scenario) => scenario && `${basePath}/${scenario}/${chartName}.json`
+    (scenario) => scenario && `${basePath}/data/${scenario}/${chartName}.json`
   );
 
   let [mainScenarioDataLoading, mainScenarioData] = useFetch(urls[0], cache);
