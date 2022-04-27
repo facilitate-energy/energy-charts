@@ -1,43 +1,8 @@
 import React from "react";
-import { Route, Routes } from "react-router-dom";
-import { Col } from "react-bootstrap";
-import { NavRow, MobileMenu } from "../components";
+import { Outlet } from "react-router-dom";
 
 function Content(props) {
-  return (
-    <Col as="main">
-      <Routes>
-        <Route path="/charts/*" element={<MobileMenu {...props} />} />
-      </Routes>
-
-      {props.contentNavs.map((nav, index) => (
-        <Routes key={index}>
-          <Route
-            path={nav.path}
-            element={<NavRow navLinks={nav.links} variant={nav.variant} />}
-          />
-        </Routes>
-      ))}
-      <Routes>
-        {props.routes.map((route, index) => (
-          <Route
-            key={index}
-            path={route.path}
-            element={
-              <route.component
-                {...route.props}
-                basePath={props.basePath}
-                cache={props.cache}
-                selectedScenarios={props.selectedScenarios}
-                showDifference={props.showDifference}
-                setBasePath={props.setBasePath}
-              />
-            }
-          />
-        ))}
-      </Routes>
-    </Col>
-  );
+  return <Outlet />;
 }
 
 export default Content;

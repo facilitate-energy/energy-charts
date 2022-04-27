@@ -1,14 +1,10 @@
 import React from "react";
-import { useParams } from "react-router-dom";
 import { Card, Col, Row } from "react-bootstrap";
 import { Chart, ChartLegend } from "../components";
 import chartsInfo from "../specs/chartsInfo";
 import chartsTitles from "../specs/chartsTitles";
 
 function Charts(props) {
-  let { chartsId } = useParams;
-  console.log(chartsId);
-
   return (
     <Row
       xs={"auto"}
