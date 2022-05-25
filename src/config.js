@@ -24,12 +24,17 @@ const config = {
   defaultScenarioGroup: "Scenario 1",
   routes: [
     {
-      path: "group1/subgroup1",
-      charts: ["chart 1", "chart 2", "chart 3", "chart 4"]
-    },
-    {
-      path: "group1/subgroup2",
-      charts: ["chart 1", "chart 4", "chart 3", "chart 2"]
+      path: "group1",
+      routes: [
+        {
+          path: "subgroup1",
+          charts: ["chart 1", "chart 2", "chart 3", "chart 4"]
+        },
+        {
+          path: "subgroup2",
+          charts: ["chart 1", "chart 4", "chart 3", "chart 2"]
+        }
+      ]
     },
     {
       path: "group2",
