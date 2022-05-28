@@ -116,7 +116,7 @@ function Chart(props) {
         </VictoryPortal>
         <VictoryAxis
           tickFormat={(t) =>
-            t > 0.01
+            Math.abs(t) > 0.01
               ? formattedNumber(t, locale, yGridStyle)
               : formattedNumber(t, locale, {
                   ...yGridStyle,
