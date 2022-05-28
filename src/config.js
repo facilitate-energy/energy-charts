@@ -1,7 +1,3 @@
-//import React from "react";
-//import { Navigate } from "react-router-dom";
-//const PageNotFound = React.lazy(() => import("./components/NotFound"));
-
 const config = {
   scenarios: [
     {
@@ -40,25 +36,6 @@ const config = {
       path: "group2",
       charts: ["chart 1", "chart 2", "chart 3", "chart 4"]
     }
-    /*  {
-      path: "group1",
-      component: Navigate,
-      props: { replace: true, to: "group1/subgroup1" }
-    },
-    {
-      path: "",
-      component: Navigate,
-      props: { replace: true, to: "group1/subgroup1" }
-    },
-    {
-      path: "/",
-      component: Navigate,
-      props: { replace: true, to: "/about" }
-    },
-    {
-      path: "*",
-      component: PageNotFound
-    } */
   ],
   contentNavs: [
     {
