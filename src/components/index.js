@@ -1,6 +1,7 @@
 import Chart from "./Chart";
 import ChartLegend from "./ChartLegend";
 import Charts from "./Charts";
+import ChartsPage from "./ChartsPage";
 import FooterCredits from "./FooterCredits";
 import FooterLogos from "./FooterLogos";
 import EmptyChart from "./EmptyChart";
@@ -21,6 +22,7 @@ export {
   Chart,
   ChartLegend,
   Charts,
+  ChartsPage,
   FooterCredits,
   FooterLogos,
   EmptyChart,

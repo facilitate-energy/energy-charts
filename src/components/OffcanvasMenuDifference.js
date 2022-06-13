@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Button, Form, Offcanvas } from "react-bootstrap";
-import { Sliders } from "react-bootstrap-icons";
+import { BsSliders as Sliders } from "react-icons/bs";
 
 function OffcanvasMenu(props) {
   const { showDifference, setShowDifference } = props;
