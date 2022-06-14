@@ -71,12 +71,14 @@ function Chart(props) {
   }
 
   if (!compareScenarioDataLoading) {
-    compareScenarioData = normaliseData(
-      compareScenarioData,
-      selectedScenarios[1],
-      seriesNames,
-      xGridMarks
-    );
+    compareScenarioData = selectedScenarios[1]
+      ? normaliseData(
+          compareScenarioData,
+          selectedScenarios[1],
+          seriesNames,
+          xGridMarks
+        )
+      : null;
   }
 
   const chartData =
@@ -94,6 +96,15 @@ function Chart(props) {
       );
     }, 0);
   };
+
+  console.log({
+    "mainScenarioDataLoading": mainScenarioDataLoading,
+    "mainScenarioData": mainScenarioData,
+    "compareScenarioDataLoading": compareScenarioDataLoading,
+    "compareScenarioData": compareScenarioData,
+    "chartData": chartData,
+    "selectedScenarios": selectedScenarios
+  });
 
   return (
     <>
