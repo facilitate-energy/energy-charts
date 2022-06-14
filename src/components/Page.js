@@ -5,7 +5,7 @@ import Markdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import rehypeRaw from "rehype-raw";
 import useFetchText from "../hooks/useFetch";
-import { NotFound } from "../components";
+import { NotFound, PageLoading } from "../components";
 
 function Page(props) {
   const { pageId } = useParams();
@@ -18,7 +18,9 @@ function Page(props) {
   return (
     <Row className="page m-0 justify-content-center align-items-center h-100">
       <Col sm={10} md={8} lg={7} xl={6} xxl={5}>
-        {!contentIsLoading && content ? (
+        {contentIsLoading ? (
+          <PageLoading />
+        ) : content ? (
           <Markdown
             remarkPlugins={[remarkGfm]}
             children={content}
