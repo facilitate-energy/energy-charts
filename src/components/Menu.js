@@ -1,10 +1,9 @@
 import React from "react";
 import { FloatingLabel, Form, ListGroup, Collapse } from "react-bootstrap";
 import { List, OptionList } from "../components";
-import scenarioTitles from "../specs/scenarioTitles";
 
 function Menu(props) {
-  const { scenarioList, selectedScenarios } = props;
+  const { scenarioList, selectedScenarios, scenarioTitles } = props;
 
   const updateCompareScenario = (e) => {
     if (e.target.value !== "none") {

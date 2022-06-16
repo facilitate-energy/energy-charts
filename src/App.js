@@ -2,9 +2,8 @@ import React, { useState, useRef, useEffect, Suspense } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 import { Layout } from "./containers";
 import { PageLoading, ChartsPage, Charts, Page } from "./components";
-import config from "./config";
 
-function App() {
+function App({ config }) {
   const [mainScenario, setMainScenario] = useState(config.defaultScenarioGroup);
   const [compareScenario, setCompareScenario] = useState(null);
   const [showDifference, setShowDifference] = useState(false);
@@ -12,6 +11,12 @@ function App() {
 
   const cache = useRef({});
   const chartsPath = "charts/*";
+
+  const titles = {
+    chartsTitles: config.titles.charts,
+    scenarioTitles: config.titles.scenarios,
+    seriesTitles: config.titles.series
+  };
 
   useEffect(() => {
     if (!compareScenario) {
@@ -57,7 +62,9 @@ function App() {
                       showDifference={showDifference}
                       basePath={basePath}
                       charts={route.charts}
+                      chartsInfo={config.chartsInfo}
                       cache={cache}
+                      {...titles}
                     />
                   )
                 }
@@ -84,7 +91,9 @@ function App() {
                               showDifference={showDifference}
                               basePath={basePath}
                               charts={route.charts}
+                              chartsInfo={config.chartsInfo}
                               cache={cache}
+                              {...titles}
                             />
                           )
                         }

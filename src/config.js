@@ -1,4 +1,15 @@
+import chartsInfo from "./specs/chartsInfo";
+import chartsTitles from "./specs/chartsTitles";
+import seriesTitles from "./specs/seriesTitles";
+import scenarioTitles from "./specs/scenarioTitles";
+
 const config = {
+  chartsInfo: chartsInfo,
+  titles: {
+    charts: chartsTitles,
+    series: seriesTitles,
+    scenarios: scenarioTitles
+  },
   scenarios: [
     {
       name: "Scenario 1",

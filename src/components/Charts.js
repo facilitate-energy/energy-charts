@@ -1,22 +1,24 @@
 import React from "react";
 import { Card, Col, Row } from "react-bootstrap";
 import { Chart, ChartLegend } from "../components";
-import chartsInfo from "../specs/chartsInfo";
-import chartsTitles from "../specs/chartsTitles";
 
 function Charts(props) {
+  const { charts, chartsInfo, chartsTitles, seriesTitles } = props;
+
   return (
     <Row
       xs={"auto"}
       className="charts py-2 justify-content-center justify-content-md-start"
     >
-      {props.charts.map((chart, idx) => (
+      {charts.map((chart, idx) => (
         <Col className="p-2" key={idx}>
           <Card>
-            <Card.Header>{chartsTitles[chart] || chart}</Card.Header>
+            <Card.Header>
+              {(chartsTitles && chartsTitles[chart]) || chart}
+            </Card.Header>
             <Chart chartName={chart} {...props} {...chartsInfo[chart]} />
             <Card.Footer>
-              <ChartLegend {...chartsInfo[chart]} />
+              <ChartLegend {...chartsInfo[chart]} seriesTitles={seriesTitles} />
             </Card.Footer>
           </Card>
         </Col>
