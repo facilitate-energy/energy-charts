@@ -12,7 +12,7 @@ function Layout(props) {
         <Content {...props} />
       </Row>
       <Row as="footer" className="mt-3 mx-0">
-        <Footer />
+        <Footer {...props} />
       </Row>
     </Container>
   );
