@@ -27,7 +27,7 @@ function Chart(props) {
     maxY,
     minY,
     xGridMarks,
-    basePath,
+    basePath = "",
     cache,
     locale
   } = props;

@@ -5,6 +5,7 @@ import scenarioTitles from "./specs/scenarioTitles";
 
 const config = {
   chartsInfo: chartsInfo,
+  chartsPath: "charts/*",
   titles: {
     charts: chartsTitles,
     series: seriesTitles,

@@ -7,10 +7,8 @@ function App({ config }) {
   const [mainScenario, setMainScenario] = useState(config.defaultScenarioGroup);
   const [compareScenario, setCompareScenario] = useState(null);
   const [showDifference, setShowDifference] = useState(false);
-  const [basePath, setBasePath] = useState("");
 
   const cache = useRef({});
-  const chartsPath = "charts/*";
 
   const titles = {
     chartsTitles: config.titles.charts,
@@ -31,16 +29,15 @@ function App({ config }) {
           <Route index element={<Navigate to="about" replace={true} />} />
           <Route
             path=":pageId"
-            element={<Page cache={cache} basePath={basePath} />}
+            element={<Page cache={cache} basePath={config.basePath} />}
           />
           <Route
-            path={chartsPath}
+            path={config.chartsPath}
             element={
               <ChartsPage
                 {...config}
                 selectedScenarios={[mainScenario, compareScenario]}
                 showDifference={showDifference}
-                setBasePath={setBasePath}
                 setMainScenario={setMainScenario}
                 setCompareScenario={setCompareScenario}
                 setShowDifference={setShowDifference}
@@ -60,7 +57,7 @@ function App({ config }) {
                     <Charts
                       selectedScenarios={[mainScenario, compareScenario]}
                       showDifference={showDifference}
-                      basePath={basePath}
+                      basePath={config.basePath}
                       charts={route.charts}
                       chartsInfo={config.chartsInfo}
                       cache={cache}
@@ -89,7 +86,7 @@ function App({ config }) {
                                 compareScenario
                               ]}
                               showDifference={showDifference}
-                              basePath={basePath}
+                              basePath={config.basePath}
                               charts={route.charts}
                               chartsInfo={config.chartsInfo}
                               cache={cache}
