@@ -20,7 +20,7 @@ function List(props) {
             onSelection(item);
           }}
         >
-          {itemTitles[item] || item}
+          {(itemTitles && itemTitles[item]) || item}
         </ListGroup.Item>
       ))}
     </>

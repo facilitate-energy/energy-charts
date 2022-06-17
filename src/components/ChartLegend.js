@@ -1,8 +1,9 @@
 import React from "react";
 import { Row, Col } from "react-bootstrap";
-import seriesTitles from "../specs/seriesTitles";
 
-function ChartLegend({ seriesNames, colorScale, itemsPerRow = 4 }) {
+function ChartLegend(props) {
+  const { seriesNames, seriesTitles, colorScale } = props;
+
   return (
     <Row xs="auto" style={{ maxWidth: 440 }}>
       {seriesNames.map((seriesName, idx) => (
@@ -30,7 +31,7 @@ function ChartLegend({ seriesNames, colorScale, itemsPerRow = 4 }) {
                 }}
               >
                 {" "}
-                {seriesTitles[seriesName] || seriesName}{" "}
+                {(seriesTitles && seriesTitles[seriesName]) || seriesName}{" "}
               </span>
             </Col>
           </Row>

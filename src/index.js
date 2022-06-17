@@ -5,13 +5,14 @@ import { BrowserRouter } from "react-router-dom";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
+import config from "./config";
 
 const root = createRoot(document.getElementById("root"));
 
 root.render(
   <React.StrictMode>
     <BrowserRouter>
-      <App />
+      <App config={config} />
     </BrowserRouter>
   </React.StrictMode>
 );

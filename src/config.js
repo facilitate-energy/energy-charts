@@ -1,4 +1,17 @@
+import chartsInfo from "./specs/chartsInfo";
+import chartsTitles from "./specs/chartsTitles";
+import seriesTitles from "./specs/seriesTitles";
+import scenarioTitles from "./specs/scenarioTitles";
+
 const config = {
+  chartsInfo: chartsInfo,
+  chartsPath: "charts/*",
+  demo: true,
+  titles: {
+    charts: chartsTitles,
+    series: seriesTitles,
+    scenarios: scenarioTitles
+  },
   scenarios: [
     {
       name: "Scenario 1",
@@ -18,6 +31,7 @@ const config = {
     }
   ],
   defaultScenarioGroup: "Scenario 1",
+  landingPage: "about",
   routes: [
     {
       path: "group1",

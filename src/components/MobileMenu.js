@@ -1,10 +1,9 @@
 import React from "react";
 import { Row, Col, ButtonGroup } from "react-bootstrap";
 import { OffcanvasMenu, OffcanvasMenuDifference } from "../components";
-import scenarioTitles from "../specs/scenarioTitles";
 
 function MobileMenu(props) {
-  const { scenarioList } = props;
+  const { scenarioList, scenarioTitles } = props;
 
   const menuButtons = [
     {

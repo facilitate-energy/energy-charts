@@ -5,8 +5,8 @@ import { FooterLogos, FooterCredits } from "../components";
 function Footer(props) {
   return (
     <Container fluid className="footer bg-light mt-auto pr-0" as="footer">
-      <FooterLogos />
-      <FooterCredits />
+      <FooterLogos {...props} />
+      <FooterCredits {...props} />
     </Container>
   );
 }

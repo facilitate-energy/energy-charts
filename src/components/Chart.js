@@ -13,8 +13,6 @@ import {
 import useFetch from "../hooks/useFetch";
 import calculateDifference from "../utils/calculateDifference";
 import normaliseData from "../utils/normaliseData";
-import seriesTitles from "../specs/seriesTitles";
-import scenarioTitles from "../specs/scenarioTitles";
 
 function Chart(props) {
   const {
@@ -23,11 +21,13 @@ function Chart(props) {
     showDifference,
     colorScale,
     seriesNames,
+    seriesTitles,
+    scenarioTitles,
     unit,
     maxY,
     minY,
     xGridMarks,
-    basePath,
+    basePath = "",
     cache,
     locale
   } = props;
@@ -97,15 +97,6 @@ function Chart(props) {
     }, 0);
   };
 
-  console.log({
-    "mainScenarioDataLoading": mainScenarioDataLoading,
-    "mainScenarioData": mainScenarioData,
-    "compareScenarioDataLoading": compareScenarioDataLoading,
-    "compareScenarioData": compareScenarioData,
-    "chartData": chartData,
-    "selectedScenarios": selectedScenarios
-  });
-
   return (
     <>
       <VictoryChart
@@ -151,16 +142,21 @@ function Chart(props) {
                         labels={({ datum }) =>
                           `${
                             showDifference
-                              ? (scenarioTitles[scenario.name[0]] ||
+                              ? ((scenarioTitles &&
+                                  scenarioTitles[scenario.name[0]]) ||
                                   scenario.name[0]) +
                                   " - " +
-                                  scenarioTitles[scenario.name[1]] ||
+                                  (scenarioTitles &&
+                                    scenarioTitles[scenario.name[1]]) ||
                                 scenario.name[1]
-                              : scenarioTitles[scenario.name] || scenario.name
+                              : (scenarioTitles &&
+                                  scenarioTitles[scenario.name]) ||
+                                scenario.name
                           }
                         ${formattedNumber(datum[0], locale, yearStyle)}
                         ${
-                          seriesTitles[series.seriesName] || series.seriesName
+                          (seriesTitles && seriesTitles[series.seriesName]) ||
+                          series.seriesName
                         }: ${formattedNumber(
                             datum[1],
                             locale,
