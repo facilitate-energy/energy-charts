@@ -26,7 +26,19 @@ function App({ config }) {
     <Suspense fallback={<PageLoading />}>
       <Routes>
         <Route path="/" element={<Layout {...config} />}>
-          <Route index element={<Navigate to="about" replace={true} />} />
+          {config.landingPage ? (
+            <Route
+              index
+              element={<Navigate to={config.landingPage} replace={true} />}
+            />
+          ) : (
+            <Route
+              index
+              element={
+                <Page cache={cache} basePath={config.basePath} name="index" />
+              }
+            />
+          )}
           <Route
             path=":pageId"
             element={<Page cache={cache} basePath={config.basePath} />}

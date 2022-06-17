@@ -30,6 +30,7 @@ const config = {
     }
   ],
   defaultScenarioGroup: "Scenario 1",
+  landingPage: "about",
   routes: [
     {
       path: "group1",

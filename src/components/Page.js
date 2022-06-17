@@ -9,9 +9,10 @@ import { NotFound, PageLoading } from "../components";
 
 function Page(props) {
   const { pageId } = useParams();
-  const { basePath = "", cache } = props;
+  const { basePath = "", cache, name } = props;
+  const page = name ? name : pageId;
   const [contentIsLoading, content] = useFetchText(
-    `${basePath}/pages/${pageId}.md`,
+    `${basePath}/pages/${page}.md`,
     cache
   );
 
