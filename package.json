@@ -1,7 +1,15 @@
 {
   "name": "energy-charts",
   "version": "0.6.0",
-  "private": true,
+  "homepage": "https://energy-charts.netlify.app/",
+  "bugs": {
+    "url": "https://github.com/facilitate-energy/energy-charts/issues"
+  },
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/facilitate-energy/energy-charts.git"
+  },
   "dependencies": {
     "bootstrap": "^5.1.3",
     "prop-types": "^15.8.1",
@@ -16,6 +24,11 @@
     "victory": "^36.5.0",
     "web-vitals": "^2.1.4"
   },
+  "main": "dist/App.js",
+  "module": "dist/App.js",
+  "files": [
+    "dist"
+  ],
   "overrides": {
     "autoprefixer": "10.4.5"
   },
@@ -23,7 +36,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "dist-build": "rm -rf dist && SET NODE_ENV=production && babel src --out-dir dist"
   },
   "eslintConfig": {
     "extends": [
@@ -44,6 +58,9 @@
     ]
   },
   "devDependencies": {
+    "@babel/cli": "^7.17.10",
+    "@babel/preset-env": "^7.18.2",
+    "@babel/preset-react": "^7.17.12",
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.3.0",
     "@testing-library/user-event": "^14.2.0",
