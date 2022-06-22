@@ -3,7 +3,13 @@ import { Card, Col, Row } from "react-bootstrap";
 import { Chart, ChartLegend } from "../components";
 
 function Charts(props) {
-  const { charts, chartsInfo, chartsTitles, seriesTitles } = props;
+  const {
+    charts,
+    chartsInfo,
+    chartsTitles,
+    seriesTitles,
+    maxChartWidth = 440
+  } = props;
 
   return (
     <Row
@@ -12,7 +18,7 @@ function Charts(props) {
     >
       {charts.map((chart, idx) => (
         <Col className="p-2" key={idx}>
-          <Card>
+          <Card style={{ maxWidth: maxChartWidth }}>
             <Card.Header>
               {(chartsTitles && chartsTitles[chart]) || chart}
             </Card.Header>
