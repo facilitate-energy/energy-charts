@@ -1,3 +1,4 @@
+import Alert from "./AlertBox";
 import Chart from "./Chart";
 import ChartLegend from "./ChartLegend";
 import Charts from "./Charts";
@@ -19,6 +20,7 @@ import Page from "./Page";
 import PageLoading from "./PageLoading";
 
 export {
+  Alert,
   Chart,
   ChartLegend,
   Charts,

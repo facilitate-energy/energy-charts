@@ -5,7 +5,7 @@ function ChartLegend(props) {
   const { seriesNames, seriesTitles, colorScale } = props;
 
   return (
-    <Row xs="auto" style={{ maxWidth: 440 }}>
+    <Row xs="auto">
       {seriesNames.map((seriesName, idx) => (
         <Col className="chart-legend" key={idx}>
           <Row xs={2} className="align-items-center">

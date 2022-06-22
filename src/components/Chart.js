@@ -27,9 +27,11 @@ function Chart(props) {
     maxY,
     minY,
     xGridMarks,
+    xGridValues = xGridMarks,
     basePath = "",
     cache,
-    locale
+    locale,
+    xDomainPadding = 20
   } = props;
 
   const numberStyle = {
@@ -66,7 +68,7 @@ function Chart(props) {
       mainScenarioData,
       selectedScenarios[0],
       seriesNames,
-      xGridMarks
+      xGridValues
     );
   }
 
@@ -76,7 +78,7 @@ function Chart(props) {
           compareScenarioData,
           selectedScenarios[1],
           seriesNames,
-          xGridMarks
+          xGridValues
         )
       : null;
   }
@@ -100,7 +102,7 @@ function Chart(props) {
   return (
     <>
       <VictoryChart
-        domainPadding={{ x: 20 }}
+        domainPadding={{ x: xDomainPadding }}
         domain={chartDomain}
         containerComponent={
           <VictoryContainer
