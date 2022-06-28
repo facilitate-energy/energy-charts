@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import PropTypes from "prop-types";
 
 function useFetch(url, cache) {
   const [content, setContent] = useState(null);
@@ -51,5 +52,9 @@ function useFetch(url, cache) {
 
   return [isFetching, content];
 }
+
+useFetch.propTypes = {
+  url: PropTypes.string.isRequired
+};
 
 export default useFetch;
