@@ -33,7 +33,8 @@ function Chart(props) {
     locale,
     xDomainPadding = 20,
     stackbarOffset = 20,
-    chartWidth
+    chartWidth,
+    padding
   } = props;
 
   const numberStyle = {
@@ -106,6 +107,7 @@ function Chart(props) {
       <VictoryChart
         domainPadding={{ x: xDomainPadding }}
         domain={chartDomain}
+        padding={padding}
         width={chartWidth}
         containerComponent={
           <VictoryContainer
