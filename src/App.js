@@ -73,6 +73,10 @@ function App({ config }) {
                       charts={route.charts}
                       chartsInfo={config.chartsInfo}
                       cache={cache}
+                      xDomainPadding={config.xDomainPadding}
+                      xGridValues={config.xGridValues}
+                      xGridMarks={config.xGridMarks}
+                      maxChartWidth={config.maxChartWidth}
                       {...titles}
                     />
                   )
@@ -102,6 +106,10 @@ function App({ config }) {
                               charts={route.charts}
                               chartsInfo={config.chartsInfo}
                               cache={cache}
+                              xDomainPadding={config.xDomainPadding}
+                              xGridValues={config.xGridValues}
+                              xGridMarks={config.xGridMarks}
+                              maxChartWidth={config.maxChartWidth}
                               {...titles}
                             />
                           )
