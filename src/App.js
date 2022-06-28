@@ -77,6 +77,7 @@ function App({ config }) {
                       xGridValues={config.xGridValues}
                       xGridMarks={config.xGridMarks}
                       maxChartWidth={config.maxChartWidth}
+                      stackbarOffset={config.stackbarOffset}
                       {...titles}
                     />
                   )
@@ -110,6 +111,7 @@ function App({ config }) {
                               xGridValues={config.xGridValues}
                               xGridMarks={config.xGridMarks}
                               maxChartWidth={config.maxChartWidth}
+                              stackbarOffset={config.stackbarOffset}
                               {...titles}
                             />
                           )

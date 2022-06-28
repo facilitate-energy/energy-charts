@@ -31,7 +31,9 @@ function Chart(props) {
     basePath = "",
     cache,
     locale,
-    xDomainPadding = 20
+    xDomainPadding = 20,
+    stackbarOffset = 20,
+    chartWidth
   } = props;
 
   const numberStyle = {
@@ -104,6 +106,7 @@ function Chart(props) {
       <VictoryChart
         domainPadding={{ x: xDomainPadding }}
         domain={chartDomain}
+        width={chartWidth}
         containerComponent={
           <VictoryContainer
             style={{
@@ -132,7 +135,7 @@ function Chart(props) {
           axisLabelComponent={<VictoryLabel y={35} x={30} angle={0} />}
         />
         {!mainScenarioDataLoading && !compareScenarioDataLoading && (
-          <VictoryGroup offset={20}>
+          <VictoryGroup offset={stackbarOffset}>
             {chartData.map(
               (scenario, idx) =>
                 scenario && (
