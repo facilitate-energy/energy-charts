@@ -35,7 +35,8 @@ function Chart(props) {
     stackbarOffset = 20,
     chartWidth,
     padding,
-    barWidth
+    barWidth,
+    widthScaling
   } = props;
 
   const scenarioCount = selectedScenarios[1] ? 2 : 1;
@@ -108,7 +109,7 @@ function Chart(props) {
   return (
     <>
       <VictoryChart
-        domainPadding={{ x: xDomainPadding }}
+        domainPadding={{ x: Math.round(xDomainPadding * widthScaling) }}
         domain={chartDomain}
         padding={padding}
         width={chartWidth}
@@ -140,7 +141,7 @@ function Chart(props) {
           axisLabelComponent={<VictoryLabel y={35} x={30} angle={0} />}
         />
         {!mainScenarioDataLoading && !compareScenarioDataLoading && (
-          <VictoryGroup offset={stackbarOffset}>
+          <VictoryGroup offset={Math.round(stackbarOffset * widthScaling)}>
             {chartData.map(
               (scenario, idx) =>
                 scenario && (
@@ -148,7 +149,9 @@ function Chart(props) {
                     {scenario.data.map((series, idx) => (
                       <VictoryBar
                         key={idx}
-                        barWidth={Math.round(barWidth / scenarioCount)}
+                        barWidth={Math.round(
+                          (barWidth / scenarioCount) * widthScaling
+                        )}
                         data={series.seriesValues}
                         labels={({ datum }) =>
                           `${

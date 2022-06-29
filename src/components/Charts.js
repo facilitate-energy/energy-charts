@@ -16,6 +16,8 @@ function Charts(props) {
 
   const chartWidth = applyMaxChartWidth ? maxChartWidth : 450;
 
+  const widthScaling = chartWidth / maxChartWidth;
+
   return (
     <Row
       xs={"auto"}
@@ -32,6 +34,7 @@ function Charts(props) {
               {...props}
               {...chartsInfo[chart]}
               chartWidth={chartWidth}
+              widthScaling={widthScaling}
             />
             <Card.Footer>
               <ChartLegend {...chartsInfo[chart]} seriesTitles={seriesTitles} />
