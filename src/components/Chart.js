@@ -34,8 +34,11 @@ function Chart(props) {
     xDomainPadding = 20,
     stackbarOffset = 20,
     chartWidth,
-    padding
+    padding,
+    barWidth
   } = props;
+
+  const scenarioCount = selectedScenarios[1] ? 2 : 1;
 
   const numberStyle = {
     maximumSignificantDigits: 3
@@ -145,6 +148,7 @@ function Chart(props) {
                     {scenario.data.map((series, idx) => (
                       <VictoryBar
                         key={idx}
+                        barWidth={Math.round(barWidth / scenarioCount)}
                         data={series.seriesValues}
                         labels={({ datum }) =>
                           `${

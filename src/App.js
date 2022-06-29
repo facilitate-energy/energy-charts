@@ -79,6 +79,7 @@ function App({ config }) {
                       maxChartWidth={config.maxChartWidth}
                       stackbarOffset={config.stackbarOffset}
                       padding={config.chartPadding}
+                      barWidth={config.barWidth}
                       {...titles}
                     />
                   )
@@ -114,6 +115,7 @@ function App({ config }) {
                               maxChartWidth={config.maxChartWidth}
                               stackbarOffset={config.stackbarOffset}
                               padding={config.chartPadding}
+                              barWidth={config.barWidth}
                               {...titles}
                             />
                           )
