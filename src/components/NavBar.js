@@ -4,7 +4,7 @@ import { Navbar, Nav, Container } from "react-bootstrap";
 import { NavToggle } from "../components";
 
 function NavBar(props) {
-  const { navLinks } = props;
+  const { navLinks, navBrand } = props;
 
   const [expandNavbar, setExpandNavbar] = useState(false);
 
@@ -17,7 +17,7 @@ function NavBar(props) {
       expanded={expandNavbar}
     >
       <Container>
-        <Navbar.Brand href="/">Energy Charts</Navbar.Brand>
+        <Navbar.Brand href={navBrand.to}>{navBrand.brand}</Navbar.Brand>
         <Navbar.Toggle
           aria-controls="responsive-navbar-nav"
           onClick={() => setExpandNavbar(!expandNavbar)}

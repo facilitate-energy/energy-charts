@@ -72,7 +72,11 @@ const config = {
   headerNavLinks: [
     { to: "/about", text: "About" },
     { to: "/charts", text: "Charts" }
-  ]
+  ],
+  headerNavBrand: {
+    brand: "Energy Charts",
+    to: "/"
+  }
 };
 
 export { config as default };
