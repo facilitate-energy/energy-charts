@@ -2,11 +2,15 @@ import React from "react";
 import { VictoryChart, VictoryAxis, VictoryLabel } from "victory";
 
 function EmptyChart(props) {
-  const { unit, maxY, minY, xGridMarks } = props;
+  const { unit, maxY, minY, xGridMarks, chartWidth } = props;
 
   return (
     <>
-      <VictoryChart domainPadding={{ x: 20 }} domain={{ y: [minY, maxY] }}>
+      <VictoryChart
+        width={chartWidth}
+        domainPadding={{ x: 20 }}
+        domain={{ y: [minY, maxY] }}
+      >
         <VictoryAxis tickFormat={(t) => t.toString()} tickValues={xGridMarks} />
         <VictoryAxis
           dependentAxis
