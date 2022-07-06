@@ -76,6 +76,7 @@ function App({ config }) {
                       xDomainPadding={config.xDomainPadding}
                       xGridValues={config.xGridValues}
                       xGridMarks={config.xGridMarks}
+                      fixedDomain={config.fixedDomain}
                       maxChartWidth={config.maxChartWidth}
                       stackbarOffset={config.stackbarOffset}
                       padding={config.chartPadding}
@@ -112,6 +113,7 @@ function App({ config }) {
                               xDomainPadding={config.xDomainPadding}
                               xGridValues={config.xGridValues}
                               xGridMarks={config.xGridMarks}
+                              fixedDomain={config.fixedDomain}
                               maxChartWidth={config.maxChartWidth}
                               stackbarOffset={config.stackbarOffset}
                               padding={config.chartPadding}

@@ -24,6 +24,7 @@ function Chart(props) {
     seriesTitles,
     scenarioTitles,
     unit,
+    fixedDomain,
     maxY,
     minY,
     xGridMarks,
@@ -58,7 +59,8 @@ function Chart(props) {
     return Intl.NumberFormat(locale, options).format(number);
   };
 
-  const chartDomain = showDifference ? null : { y: [minY, maxY] };
+  const chartDomain =
+    showDifference || !fixedDomain ? null : { y: [minY, maxY] };
 
   const urls = selectedScenarios.map(
     (scenario) => scenario && `${basePath}/data/${scenario}/${chartName}.json`

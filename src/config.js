@@ -7,6 +7,7 @@ const config = {
   chartsInfo: chartsInfo,
   chartsPath: "charts/*",
   demo: true,
+  fixedDomain: true,
   titles: {
     charts: chartsTitles,
     series: seriesTitles,
