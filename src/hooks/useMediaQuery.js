@@ -23,8 +23,8 @@ function useMediaQuery(query) {
   return matches;
 }
 
-useFetch.propTypes = {
-  path: PropTypes.query.isRequired
+useMediaQuery.propTypes = {
+  query: PropTypes.string.isRequired
 };
 
 export default useMediaQuery;

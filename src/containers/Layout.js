@@ -9,7 +9,10 @@ function Layout(props) {
   return (
     <Container fluid="ms" className="vh-100 d-flex flex-column">
       <Row as="header" className="mb-3 mx-0">
-        <Header navLinks={props.headerNavLinks} />
+        <Header
+          navLinks={props.headerNavLinks}
+          navBrand={props.headerNavBrand}
+        />
         {alert && <Alert {...alert} />}
       </Row>
       <Row className="mx-0 flex-grow-1">

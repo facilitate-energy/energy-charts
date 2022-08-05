@@ -73,6 +73,14 @@ function App({ config }) {
                       charts={route.charts}
                       chartsInfo={config.chartsInfo}
                       cache={cache}
+                      xDomainPadding={config.xDomainPadding}
+                      xGridValues={config.xGridValues}
+                      xGridMarks={config.xGridMarks}
+                      fixedDomain={config.fixedDomain}
+                      maxChartWidth={config.maxChartWidth}
+                      stackbarOffset={config.stackbarOffset}
+                      padding={config.chartPadding}
+                      barWidth={config.barWidth}
                       {...titles}
                     />
                   )
@@ -102,6 +110,14 @@ function App({ config }) {
                               charts={route.charts}
                               chartsInfo={config.chartsInfo}
                               cache={cache}
+                              xDomainPadding={config.xDomainPadding}
+                              xGridValues={config.xGridValues}
+                              xGridMarks={config.xGridMarks}
+                              fixedDomain={config.fixedDomain}
+                              maxChartWidth={config.maxChartWidth}
+                              stackbarOffset={config.stackbarOffset}
+                              padding={config.chartPadding}
+                              barWidth={config.barWidth}
                               {...titles}
                             />
                           )

@@ -24,6 +24,7 @@ function Chart(props) {
     seriesTitles,
     scenarioTitles,
     unit,
+    fixedDomain,
     maxY,
     minY,
     xGridMarks,
@@ -31,8 +32,15 @@ function Chart(props) {
     basePath = "",
     cache,
     locale,
-    xDomainPadding = 20
+    xDomainPadding = 20,
+    stackbarOffset = 20,
+    chartWidth,
+    padding,
+    barWidth,
+    widthScaling
   } = props;
+
+  const scenarioCount = selectedScenarios[1] ? 2 : 1;
 
   const numberStyle = {
     maximumSignificantDigits: 3
@@ -51,7 +59,8 @@ function Chart(props) {
     return Intl.NumberFormat(locale, options).format(number);
   };
 
-  const chartDomain = showDifference ? null : { y: [minY, maxY] };
+  const chartDomain =
+    showDifference || !fixedDomain ? null : { y: [minY, maxY] };
 
   const urls = selectedScenarios.map(
     (scenario) => scenario && `${basePath}/data/${scenario}/${chartName}.json`
@@ -102,8 +111,10 @@ function Chart(props) {
   return (
     <>
       <VictoryChart
-        domainPadding={{ x: xDomainPadding }}
+        domainPadding={{ x: Math.round(xDomainPadding * widthScaling) }}
         domain={chartDomain}
+        padding={padding}
+        width={chartWidth}
         containerComponent={
           <VictoryContainer
             style={{
@@ -132,7 +143,7 @@ function Chart(props) {
           axisLabelComponent={<VictoryLabel y={35} x={30} angle={0} />}
         />
         {!mainScenarioDataLoading && !compareScenarioDataLoading && (
-          <VictoryGroup offset={20}>
+          <VictoryGroup offset={Math.round(stackbarOffset * widthScaling)}>
             {chartData.map(
               (scenario, idx) =>
                 scenario && (
@@ -140,6 +151,9 @@ function Chart(props) {
                     {scenario.data.map((series, idx) => (
                       <VictoryBar
                         key={idx}
+                        barWidth={Math.round(
+                          (barWidth / scenarioCount) * widthScaling
+                        )}
                         data={series.seriesValues}
                         labels={({ datum }) =>
                           `${

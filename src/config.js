@@ -7,6 +7,7 @@ const config = {
   chartsInfo: chartsInfo,
   chartsPath: "charts/*",
   demo: true,
+  fixedDomain: true,
   titles: {
     charts: chartsTitles,
     series: seriesTitles,
@@ -72,7 +73,11 @@ const config = {
   headerNavLinks: [
     { to: "/about", text: "About" },
     { to: "/charts", text: "Charts" }
-  ]
+  ],
+  headerNavBrand: {
+    brand: "Energy Charts",
+    to: "/"
+  }
 };
 
 export { config as default };
