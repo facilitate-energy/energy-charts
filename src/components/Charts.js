@@ -1,6 +1,5 @@
 import React from "react";
 import { Card, Col, Row } from "react-bootstrap";
-import useMediaQuery from "../hooks/useMediaQuery";
 import { Chart, ChartLegend } from "../components";
 
 function Charts(props) {
@@ -9,14 +8,9 @@ function Charts(props) {
     chartsInfo,
     chartsTitles,
     seriesTitles,
-    maxChartWidth = 450
+    chartWidth,
+    chartWidthScaling = 1
   } = props;
-
-  let applyMaxChartWidth = useMediaQuery(`(min-width: ${maxChartWidth}px)`);
-
-  const chartWidth = applyMaxChartWidth ? maxChartWidth : 450;
-
-  const widthScaling = chartWidth / maxChartWidth;
 
   return (
     <Row
@@ -36,7 +30,7 @@ function Charts(props) {
                   {...props}
                   {...chartsInfo[chart]}
                   chartWidth={chartWidth}
-                  widthScaling={widthScaling}
+                  widthScaling={chartWidthScaling}
                 />
                 <Card.Footer>
                   <ChartLegend

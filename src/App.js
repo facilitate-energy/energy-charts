@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect, Suspense } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
+import useMediaQuery from "./hooks/useMediaQuery";
 import { Layout } from "./containers";
 import { PageLoading, ChartsPage, Charts, Page } from "./components";
 
@@ -9,6 +10,11 @@ function App({ config }) {
   const [showDifference, setShowDifference] = useState(false);
 
   const cache = useRef({});
+
+  const maxChartWidth = config.maxChartWidth ? config.maxChartWidth : 450;
+  const applyMaxChartWidth = useMediaQuery(`(min-width: ${maxChartWidth}px)`);
+  const chartWidth = applyMaxChartWidth ? maxChartWidth : 450;
+  const chartWidthScaling = chartWidth / maxChartWidth;
 
   const titles = {
     chartsTitles: config.titles.charts,
@@ -77,7 +83,8 @@ function App({ config }) {
                       xGridValues={config.xGridValues}
                       xGridMarks={config.xGridMarks}
                       fixedDomain={config.fixedDomain}
-                      maxChartWidth={config.maxChartWidth}
+                      chartWidth={chartWidth}
+                      chartWidthScaling={chartWidthScaling}
                       stackbarOffset={config.stackbarOffset}
                       padding={config.chartPadding}
                       barWidth={config.barWidth}
@@ -114,7 +121,8 @@ function App({ config }) {
                               xGridValues={config.xGridValues}
                               xGridMarks={config.xGridMarks}
                               fixedDomain={config.fixedDomain}
-                              maxChartWidth={config.maxChartWidth}
+                              chartWidth={chartWidth}
+                              chartWidthScaling={chartWidthScaling}
                               stackbarOffset={config.stackbarOffset}
                               padding={config.chartPadding}
                               barWidth={config.barWidth}
