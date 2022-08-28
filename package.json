@@ -21,8 +21,8 @@
     "react-router-dom": "^6.3.0",
     "rehype-raw": "^6.1.1",
     "remark-gfm": "^3.0.1",
-    "victory": "^36.6.3",
-    "web-vitals": "^2.1.4"
+    "victory": "^36.6.5",
+    "web-vitals": "^3.0.0"
   },
   "main": "dist/App.js",
   "module": "dist/App.js",
