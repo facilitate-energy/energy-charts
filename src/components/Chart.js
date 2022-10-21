@@ -40,7 +40,7 @@ function Chart(props) {
     widthScaling
   } = props;
 
-  const scenarioCount = selectedScenarios[1] ? 2 : 1;
+  const barCount = selectedScenarios[1] & !showDifference ? 2 : 1;
 
   const numberStyle = {
     maximumSignificantDigits: 3
@@ -152,7 +152,7 @@ function Chart(props) {
                       <VictoryBar
                         key={idx}
                         barWidth={Math.round(
-                          (barWidth / scenarioCount) * widthScaling
+                          (barWidth / barCount) * widthScaling
                         )}
                         data={series.seriesValues}
                         labels={({ datum }) =>
