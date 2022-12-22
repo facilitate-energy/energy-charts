@@ -40,7 +40,7 @@ function Chart(props) {
     widthScaling
   } = props;
 
-  const barCount = selectedScenarios[1] & !showDifference ? 2 : 1;
+  const barCount = selectedScenarios[1] ? (showDifference ? 1 : 2) : 1;
 
   const numberStyle = {
     maximumSignificantDigits: 3
