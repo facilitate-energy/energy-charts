@@ -1,6 +1,6 @@
 {
   "name": "energy-charts",
-  "version": "0.7.3",
+  "version": "0.7.4",
   "homepage": "https://energy-charts.netlify.app/",
   "bugs": {
     "url": "https://github.com/facilitate-energy/energy-charts/issues"
@@ -18,7 +18,7 @@
     "react-dom": "^18.2.0",
     "react-icons": "^4.7.1",
     "react-markdown": "^8.0.4",
-    "react-router-dom": "^6.4.5",
+    "react-router-dom": "^6.6.0",
     "rehype-raw": "^6.1.1",
     "remark-gfm": "^3.0.1",
     "victory": "^36.6.8",
@@ -55,7 +55,7 @@
     ]
   },
   "devDependencies": {
-    "@babel/cli": "^7.19.3",
+    "@babel/cli": "^7.20.7",
     "@babel/preset-env": "^7.20.2",
     "@babel/preset-react": "^7.18.6",
     "@testing-library/jest-dom": "^5.16.5",
