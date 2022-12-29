@@ -4,16 +4,13 @@ import { Col, Container } from "react-bootstrap";
 import { Menu, MobileMenu, NavRow } from "../components";
 
 function ChartsPage(props) {
+
   const scenarioList = props.scenarios.map((scenario) => scenario.name);
 
   const menuProps = {
+    defaultScenario: props.defaultScenarioGroup,
     scenarioList: scenarioList,
     scenarioTitles: props.titles.scenarios,
-    selectedScenarios: props.selectedScenarios,
-    showDifference: props.showDifference,
-    setMainScenario: props.setMainScenario,
-    setCompareScenario: props.setCompareScenario,
-    setShowDifference: props.setShowDifference
   };
 
   return (

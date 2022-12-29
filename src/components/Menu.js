@@ -1,24 +1,25 @@
 import React from "react";
 import { FloatingLabel, Form, ListGroup, Collapse } from "react-bootstrap";
 import { List, OptionList } from "../components";
+import { useSearchParamsState } from "../utils/useSearchParamsState";
+
 
 function Menu(props) {
-  const { scenarioList, selectedScenarios, scenarioTitles } = props;
+  const { defaultScenario, scenarioList, scenarioTitles } = props;
+  const Title = props.Title ? props.Title : "Scenarios";
 
-  const updateCompareScenario = (e) => {
-    if (e.target.value !== "none") {
-      props.setCompareScenario(e.target.value);
-    } else {
-      props.setCompareScenario(null);
-    }
-  };
+  const [rawMainScenario, setMainScenario] = useSearchParamsState('s', defaultScenario);
+  const [rawCompareScenario, setCompareScenario] = useSearchParamsState('c', null);
+  const [rawShowDifference, setShowDifference] = useSearchParamsState('d', false);
+  
+  const mainScenario = rawMainScenario || defaultScenario;
+  const compareScenario = rawCompareScenario === 'none' ? null : rawCompareScenario;
+  const showDifference = rawShowDifference === "1";
 
-  const updateShowDifference = (e) => {
-    props.setShowDifference(e.target.checked);
-  };
-
-  const Title = props.Tilte ? props.Title : "Scenarios";
-
+  const updateMainScenario = (name) => setMainScenario(name);
+  const updateCompareScenario = (e) => setCompareScenario(e.target.value);
+  const updateShowDifference = (e) => setShowDifference(e.target.checked ? 1 : 0);
+  
   return (
     <>
       <p className="h4"> {Title} </p>
@@ -26,8 +27,8 @@ function Menu(props) {
         <List
           items={scenarioList}
           itemTitles={scenarioTitles}
-          selectedItem={selectedScenarios[0]}
-          onSelection={props.setMainScenario}
+          selectedItem={mainScenario}
+          onSelection={updateMainScenario}
         />
       </ListGroup>
       <hr className="menu-separator" />
@@ -36,7 +37,7 @@ function Menu(props) {
         <FloatingLabel controlId="compare-scenario-list" label="Compare with">
           <Form.Select
             onChange={updateCompareScenario}
-            value={selectedScenarios[1] ? selectedScenarios[1] : "none"}
+            value={compareScenario || "none"}
           >
             <OptionList
               items={scenarioList}
@@ -46,12 +47,12 @@ function Menu(props) {
           </Form.Select>
         </FloatingLabel>
 
-        <Collapse in={selectedScenarios[1] ? true : false}>
+        <Collapse in={compareScenario ? true : false}>
           <div>
             <hr className="menu-separator" />
             <Form.Switch
-              disabled={!selectedScenarios[1]}
-              checked={props.showDifference}
+              disabled={!compareScenario}
+              checked={showDifference}
               label="Show difference"
               id="scenario-difference-switch"
               onChange={updateShowDifference}

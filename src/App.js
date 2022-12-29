@@ -1,13 +1,10 @@
-import React, { useState, useRef, useEffect, Suspense } from "react";
-import { Routes, Route, Navigate } from "react-router-dom";
+import React, { useRef, Suspense } from "react";
+import { Routes, Route, Navigate, useSearchParams } from "react-router-dom";
 import useMediaQuery from "./hooks/useMediaQuery";
 import { Layout } from "./containers";
 import { PageLoading, ChartsPage, Charts, Page } from "./components";
 
 function App({ config }) {
-  const [mainScenario, setMainScenario] = useState(config.defaultScenarioGroup);
-  const [compareScenario, setCompareScenario] = useState(null);
-  const [showDifference, setShowDifference] = useState(false);
 
   const cache = useRef({});
 
@@ -21,12 +18,9 @@ function App({ config }) {
     scenarioTitles: config.titles.scenarios,
     seriesTitles: config.titles.series
   };
-
-  useEffect(() => {
-    if (!compareScenario) {
-      setShowDifference(false);
-    }
-  }, [compareScenario]);
+  
+  const [searchParams, ] = useSearchParams();
+  const addSearchParams = (path) => `${path}?${searchParams.toString()}`;
 
   return (
     <Suspense fallback={<PageLoading />}>
@@ -54,17 +48,12 @@ function App({ config }) {
             element={
               <ChartsPage
                 {...config}
-                selectedScenarios={[mainScenario, compareScenario]}
-                showDifference={showDifference}
-                setMainScenario={setMainScenario}
-                setCompareScenario={setCompareScenario}
-                setShowDifference={setShowDifference}
               />
             }
           >
             <Route
               index
-              element={<Navigate to={config.routes[0].path} replace={true} />}
+              element={<Navigate to={addSearchParams(config.routes[0].path)} replace={true} />}
             />
             {config.routes.map((route, idx) => (
               <Route
@@ -73,12 +62,11 @@ function App({ config }) {
                 element={
                   route.charts && (
                     <Charts
-                      selectedScenarios={[mainScenario, compareScenario]}
-                      showDifference={showDifference}
                       basePath={config.basePath}
                       charts={route.charts}
                       chartsInfo={config.chartsInfo}
                       cache={cache}
+                      defaultScenario={config.defaultScenarioGroup}
                       xDomainPadding={config.xDomainPadding}
                       xGridValues={config.xGridValues}
                       xGridMarks={config.xGridMarks}
@@ -98,7 +86,7 @@ function App({ config }) {
                     <Route
                       index
                       element={
-                        <Navigate to={route.routes[0].path} replace={true} />
+                        <Navigate to={addSearchParams(route.routes[0].path)} replace={true} />
                       }
                     />
                     {route.routes.map((route, idx) => (
@@ -108,15 +96,11 @@ function App({ config }) {
                         element={
                           route.charts && (
                             <Charts
-                              selectedScenarios={[
-                                mainScenario,
-                                compareScenario
-                              ]}
-                              showDifference={showDifference}
                               basePath={config.basePath}
                               charts={route.charts}
                               chartsInfo={config.chartsInfo}
                               cache={cache}
+                              defaultScenario={config.defaultScenarioGroup}
                               xDomainPadding={config.xDomainPadding}
                               xGridValues={config.xGridValues}
                               xGridMarks={config.xGridMarks}

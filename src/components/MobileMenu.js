@@ -1,22 +1,39 @@
 import React from "react";
 import { Row, Col, ButtonGroup } from "react-bootstrap";
 import { OffcanvasMenu, OffcanvasMenuDifference } from "../components";
+import { useSearchParamsState } from "../utils/useSearchParamsState";
 
 function MobileMenu(props) {
-  const { scenarioList, scenarioTitles } = props;
+    
 
+  const { defaultScenario, scenarioList, scenarioTitles } = props;
+
+  const [rawMainScenario, setMainScenario] = useSearchParamsState('s', defaultScenario);
+  const [rawCompareScenario, setCompareScenario] = useSearchParamsState('c', null);
+  const [rawShowDifference, setShowDifference] = useSearchParamsState('d', false);
+  
+  const mainScenario = rawMainScenario || defaultScenario;
+  const compareScenario = rawCompareScenario === 'none' ? null : rawCompareScenario;
+  const showDifference = rawShowDifference === "1";
+
+  const updateMainScenario = (name) => setMainScenario(name);
+  const updateCompareScenario = (name) => setCompareScenario(name);
+  const updateShowDifference = (checked) => setShowDifference(checked ? 1 : 0);
+  
+  const selectedScenarios = [mainScenario, compareScenario];
+  
   const menuButtons = [
     {
       placement: "start",
       title: "Scenarios",
       noneItem: false,
-      onSelection: props.setMainScenario
+      onSelection: updateMainScenario
     },
     {
       placement: "end",
       title: "Compare with",
       noneItem: true,
-      onSelection: props.setCompareScenario
+      onSelection: updateCompareScenario
     }
   ];
 
@@ -24,7 +41,7 @@ function MobileMenu(props) {
     <Row className="pb-2 d-md-none sticky-top">
       <Col className="text-center">
         <ButtonGroup>
-          {props.selectedScenarios.map((scenario, idx) => (
+          {selectedScenarios.map((scenario, idx) => (
             <OffcanvasMenu
               key={idx}
               name={scenario}
@@ -34,18 +51,19 @@ function MobileMenu(props) {
               {...menuButtons[idx]}
             />
           ))}
-          {props.selectedScenarios[1] && (
+          {selectedScenarios[1] && (
             <OffcanvasMenuDifference
               title="Options"
               placement="top"
-              showDifference={props.showDifference}
-              setShowDifference={props.setShowDifference}
+              showDifference={showDifference}
+              setShowDifference={updateShowDifference}
             />
           )}
         </ButtonGroup>
       </Col>
     </Row>
   );
+
 }
 
 export default MobileMenu;

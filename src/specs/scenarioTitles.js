@@ -1,8 +1,10 @@
+
 const scenarioTitles = {
-  "Scenario 1": "Scenario One",
-  "Scenario 2": "Scenario Two",
-  "Scenario 3": "Scenario Three",
-  "Scenario 4": "Scenario Four"
+  /* Note that the left-hand side must match  "name" in config.js */
+  "Scenario1": "Scenario One",
+  "Scenario2": "Scenario Two",
+  "Scenario3": "Scenario Three",
+  "Scenario4": "Scenario Four"
 };
 
 export default scenarioTitles;
