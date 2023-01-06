@@ -1,13 +1,22 @@
 import React, { useState, useRef, useEffect, Suspense } from "react";
-import { Routes, Route, Navigate } from "react-router-dom";
+import { Routes, Route, Navigate, useSearchParams } from "react-router-dom";
 import useMediaQuery from "./hooks/useMediaQuery";
 import { Layout } from "./containers";
 import { PageLoading, ChartsPage, Charts, Page } from "./components";
 
 function App({ config }) {
-  const [mainScenario, setMainScenario] = useState(config.defaultScenarioGroup);
-  const [compareScenario, setCompareScenario] = useState(null);
-  const [showDifference, setShowDifference] = useState(false);
+  const [searchParams] = useSearchParams();
+  const [mainScenario, setMainScenario] = useState(
+    searchParams.get("scen1")
+      ? searchParams.get("scen1")
+      : config.defaultScenarioGroup
+  );
+  const [compareScenario, setCompareScenario] = useState(
+    searchParams.get("scen2") ? searchParams.get("scen2") : null
+  );
+  const [showDifference, setShowDifference] = useState(
+    searchParams.get("diff") ? searchParams.get("diff") : false
+  );
 
   const cache = useRef({});
 
