@@ -1,13 +1,43 @@
 import React, { useState, useRef, useEffect, Suspense } from "react";
-import { Routes, Route, Navigate } from "react-router-dom";
+import { Routes, Route, Navigate, useSearchParams } from "react-router-dom";
 import useMediaQuery from "./hooks/useMediaQuery";
 import { Layout } from "./containers";
 import { PageLoading, ChartsPage, Charts, Page } from "./components";
 
 function App({ config }) {
-  const [mainScenario, setMainScenario] = useState(config.defaultScenarioGroup);
-  const [compareScenario, setCompareScenario] = useState(null);
-  const [showDifference, setShowDifference] = useState(false);
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  const scenarioGroups = config.scenarios.map(
+    (scenarioGroup) => scenarioGroup.name
+  );
+
+  const defaultScenarioGroup = config.defaultScenarioGroup
+    ? scenarioGroups.includes(config.defaultScenarioGroup)
+      ? config.defaultScenarioGroup
+      : scenarioGroups[0]
+    : scenarioGroups[0];
+
+  const loadMainScenario = searchParams.get("scen1")
+    ? scenarioGroups.includes(searchParams.get("scen1"))
+      ? searchParams.get("scen1")
+      : defaultScenarioGroup
+    : defaultScenarioGroup;
+
+  const loadCompareScenario = searchParams.get("scen2")
+    ? scenarioGroups.includes(searchParams.get("scen2"))
+      ? searchParams.get("scen2")
+      : null
+    : null;
+
+  const loadShowDifference = searchParams.get("diff")
+    ? searchParams.get("diff").toLowerCase() === "true" && loadCompareScenario
+      ? true
+      : false
+    : false;
+
+  const [mainScenario, setMainScenario] = useState(loadMainScenario);
+  const [compareScenario, setCompareScenario] = useState(loadCompareScenario);
+  const [showDifference, setShowDifference] = useState(loadShowDifference);
 
   const cache = useRef({});
 
@@ -26,7 +56,11 @@ function App({ config }) {
     if (!compareScenario) {
       setShowDifference(false);
     }
-  }, [compareScenario]);
+
+    if (searchParams.toString() !== "") {
+      setSearchParams({});
+    }
+  }, [compareScenario, searchParams, setSearchParams]);
 
   return (
     <Suspense fallback={<PageLoading />}>
