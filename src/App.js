@@ -5,15 +5,18 @@ import { Layout } from "./containers";
 import { PageLoading, ChartsPage, Charts, Page } from "./components";
 
 function App({ config }) {
-  const [searchParams] = useSearchParams();
+  const [searchParams, setSearchParams] = useSearchParams();
+
   const scenarioGroups = config.scenarios.map(
     (scenarioGroup) => scenarioGroup.name
   );
+
   const defaultScenarioGroup = config.defaultScenarioGroup
     ? scenarioGroups.includes(config.defaultScenarioGroup)
       ? config.defaultScenarioGroup
       : scenarioGroups[0]
     : scenarioGroups[0];
+
   const loadMainScenario = searchParams.get("scen1")
     ? scenarioGroups.includes(searchParams.get("scen1"))
       ? searchParams.get("scen1")
@@ -25,11 +28,13 @@ function App({ config }) {
       ? searchParams.get("scen2")
       : null
     : null;
+
   const loadShowDifference = searchParams.get("diff")
     ? searchParams.get("diff").toLowerCase() === "true" && loadCompareScenario
       ? true
       : false
     : false;
+
   const [mainScenario, setMainScenario] = useState(loadMainScenario);
   const [compareScenario, setCompareScenario] = useState(loadCompareScenario);
   const [showDifference, setShowDifference] = useState(loadShowDifference);
@@ -51,7 +56,11 @@ function App({ config }) {
     if (!compareScenario) {
       setShowDifference(false);
     }
-  }, [compareScenario]);
+
+    if (searchParams.toString() !== "") {
+      setSearchParams({});
+    }
+  }, [compareScenario, searchParams, setSearchParams]);
 
   return (
     <Suspense fallback={<PageLoading />}>
