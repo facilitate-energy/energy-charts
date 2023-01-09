@@ -6,17 +6,33 @@ import { PageLoading, ChartsPage, Charts, Page } from "./components";
 
 function App({ config }) {
   const [searchParams] = useSearchParams();
-  const [mainScenario, setMainScenario] = useState(
-    searchParams.get("scen1")
+  const scenarioGroups = config.scenarios.map(
+    (scenarioGroup) => scenarioGroup.name
+  );
+  const defaultScenarioGroup = config.defaultScenarioGroup
+    ? scenarioGroups.includes(config.defaultScenarioGroup)
+      ? config.defaultScenarioGroup
+      : scenarioGroups[0]
+    : scenarioGroups[0];
+  const loadMainScenario = searchParams.get("scen1")
+    ? scenarioGroups.includes(searchParams.get("scen1"))
       ? searchParams.get("scen1")
-      : config.defaultScenarioGroup
-  );
-  const [compareScenario, setCompareScenario] = useState(
-    searchParams.get("scen2") ? searchParams.get("scen2") : null
-  );
-  const [showDifference, setShowDifference] = useState(
-    searchParams.get("diff") ? searchParams.get("diff") : false
-  );
+      : defaultScenarioGroup
+    : defaultScenarioGroup;
+
+  const loadCompareScenario = searchParams.get("scen2")
+    ? scenarioGroups.includes(searchParams.get("scen2"))
+      ? searchParams.get("scen2")
+      : null
+    : null;
+  const loadShowDifference = searchParams.get("diff")
+    ? searchParams.get("diff").toLowerCase() === "true" && loadCompareScenario
+      ? true
+      : false
+    : false;
+  const [mainScenario, setMainScenario] = useState(loadMainScenario);
+  const [compareScenario, setCompareScenario] = useState(loadCompareScenario);
+  const [showDifference, setShowDifference] = useState(loadShowDifference);
 
   const cache = useRef({});
 
