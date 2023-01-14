@@ -58,9 +58,19 @@ function App({ config }) {
     }
 
     if (searchParams.toString() !== "") {
-      setSearchParams({});
+      setSearchParams({
+        "scen1": mainScenario,
+        "scen2": compareScenario,
+        "diff": showDifference
+      });
     }
-  }, [compareScenario, searchParams, setSearchParams]);
+  }, [
+    mainScenario,
+    compareScenario,
+    showDifference,
+    searchParams,
+    setSearchParams
+  ]);
 
   return (
     <Suspense fallback={<PageLoading />}>
@@ -88,6 +98,7 @@ function App({ config }) {
             element={
               <ChartsPage
                 {...config}
+                searchParams={searchParams.toString()}
                 selectedScenarios={[mainScenario, compareScenario]}
                 showDifference={showDifference}
                 setMainScenario={setMainScenario}
@@ -132,7 +143,12 @@ function App({ config }) {
                     <Route
                       index
                       element={
-                        <Navigate to={route.routes[0].path} replace={true} />
+                        <Navigate
+                          to={
+                            route.routes[0].path + "?" + searchParams.toString()
+                          }
+                          replace={true}
+                        />
                       }
                     />
                     {route.routes.map((route, idx) => (

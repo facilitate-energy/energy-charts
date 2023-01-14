@@ -29,7 +29,13 @@ function ChartsPage(props) {
           <Routes key={idx}>
             <Route
               path={nav.path}
-              element={<NavRow navLinks={nav.links} variant={nav.variant} />}
+              element={
+                <NavRow
+                  navLinks={nav.links}
+                  variant={nav.variant}
+                  searchParams={props.searchParams}
+                />
+              }
             />
           </Routes>
         ))}
