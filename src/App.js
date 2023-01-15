@@ -6,6 +6,7 @@ import { PageLoading, ChartsPage, Charts, Page } from "./components";
 
 function App({ config }) {
   const [searchParams, setSearchParams] = useSearchParams();
+  const showSearchParams = config.showSearchParams;
 
   const scenarioGroups = config.scenarios.map(
     (scenarioGroup) => scenarioGroup.name
@@ -57,10 +58,20 @@ function App({ config }) {
       setShowDifference(false);
     }
 
-    if (searchParams.toString() !== "") {
-      setSearchParams({});
-    }
-  }, [compareScenario, searchParams, setSearchParams]);
+    showSearchParams
+      ? setSearchParams({
+          "scen1": mainScenario,
+          "scen2": compareScenario,
+          "diff": showDifference
+        })
+      : setSearchParams();
+  }, [
+    mainScenario,
+    compareScenario,
+    showDifference,
+    setSearchParams,
+    showSearchParams
+  ]);
 
   return (
     <Suspense fallback={<PageLoading />}>
