@@ -99,7 +99,6 @@ function App({ config }) {
             element={
               <ChartsPage
                 {...config}
-                searchParams={searchParams.toString()}
                 selectedScenarios={[mainScenario, compareScenario]}
                 showDifference={showDifference}
                 setMainScenario={setMainScenario}
@@ -144,12 +143,7 @@ function App({ config }) {
                     <Route
                       index
                       element={
-                        <Navigate
-                          to={
-                            route.routes[0].path + "?" + searchParams.toString()
-                          }
-                          replace={true}
-                        />
+                        <Navigate to={route.routes[0].path} replace={true} />
                       }
                     />
                     {route.routes.map((route, idx) => (
