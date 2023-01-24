@@ -1,6 +1,6 @@
 {
   "name": "energy-charts",
-  "version": "0.8.1",
+  "version": "0.8.2",
   "homepage": "https://energy-charts.netlify.app/",
   "bugs": {
     "url": "https://github.com/facilitate-energy/energy-charts/issues"
@@ -17,8 +17,8 @@
     "react-bootstrap": "^2.7.0",
     "react-dom": "^18.2.0",
     "react-icons": "^4.7.1",
-    "react-markdown": "^8.0.4",
-    "react-router-dom": "^6.6.2",
+    "react-markdown": "^8.0.5",
+    "react-router-dom": "^6.7.0",
     "rehype-raw": "^6.1.1",
     "remark-gfm": "^3.0.1",
     "victory": "^36.6.8",
