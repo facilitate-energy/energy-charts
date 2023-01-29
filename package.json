@@ -18,7 +18,7 @@
     "react-dom": "^18.2.0",
     "react-icons": "^4.7.1",
     "react-markdown": "^8.0.5",
-    "react-router-dom": "^6.7.0",
+    "react-router-dom": "^6.8.0",
     "rehype-raw": "^6.1.1",
     "remark-gfm": "^3.0.1",
     "victory": "^36.6.8",
