@@ -1,6 +1,6 @@
 import React from "react";
 import { FloatingLabel, Form, ListGroup, Collapse } from "react-bootstrap";
-import { List, OptionList } from "../components";
+import { List, OptionList, ToggleButtons } from "../components";
 
 function Menu(props) {
   const { scenarioList, selectedScenarios, scenarioTitles } = props;
@@ -31,7 +31,8 @@ function Menu(props) {
         />
       </ListGroup>
       <hr className="menu-separator" />
-
+      <ToggleButtons />
+      <hr className="menu-separator" />
       <Form>
         <FloatingLabel controlId="compare-scenario-list" label="Compare with">
           <Form.Select

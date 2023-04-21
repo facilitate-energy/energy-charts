@@ -18,6 +18,7 @@ import OffcanvasMenuDifference from "./OffcanvasMenuDifference";
 import OptionList from "./OptionList";
 import Page from "./Page";
 import PageLoading from "./PageLoading";
+import ToggleButtons from "./ToggleButtons";
 
 export {
   Alert,
@@ -39,5 +40,6 @@ export {
   OffcanvasMenuDifference,
   OptionList,
   Page,
-  PageLoading
+  PageLoading,
+  ToggleButtons
 };
