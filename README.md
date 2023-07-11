@@ -2,7 +2,7 @@
 
 [![license](https://img.shields.io/github/license/facilitate-energy/energy-charts?color=blueviolet)](LICENSE)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app) and migrated to [Vite](https://vitejs.dev/).
 
 ## Purpose
 
@@ -42,7 +42,7 @@ To use Energy Charts as dependency in a project run:
 
 ## License
 
-Copyright 2021-2022 Facilitate Energy Ltd.
+Copyright 2021-2023 Facilitate Energy Ltd.
 
 Energy Charts is licensed under the Apache License, Version 2.0.
 
