@@ -22,7 +22,7 @@
     "rehype-raw": "^6.1.1",
     "remark-gfm": "^3.0.1",
     "victory": "^36.6.11",
-    "web-vitals": "^3.3.2"
+    "web-vitals": "^3.4.0"
   },
   "main": "dist/App.js",
   "module": "dist/App.js",
@@ -30,17 +30,11 @@
     "dist"
   ],
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
+    "start": "vite",
+    "build": "vite build",
+    "serve": "vite preview",
+    "test": "vitest",
     "dist-build": "rm -rf dist && SET NODE_ENV=production && babel src --out-dir dist --copy-files"
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
   },
   "browserslist": {
     "production": [
@@ -61,18 +55,19 @@
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^14.0.0",
     "@testing-library/user-event": "^14.4.3",
+    "@vitejs/plugin-react": "^4.0.3",
+    "eslint": "^8.44.0",
+    "eslint-config-prettier": "^8.8.0",
+    "eslint-config-react-app": "^7.0.1",
+    "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-react-hooks": "^4.6.0",
     "git-format-staged": "^3.0.0",
     "husky": "^8.0.3",
-    "prettier": "^3.0.0",
-    "react-scripts": "^5.0.1"
-  },
-  "prettier": {
-    "trailingComma": "none",
-    "tabWidth": 2,
-    "semi": true,
-    "singleQuote": false,
-    "endOfLine": "crlf",
-    "quoteProps": "preserve"
+    "jsdom": "^22.1.0",
+    "prettier": "^2.8.8",
+    "vite": "^4.4.2",
+    "vite-plugin-eslint": "^1.8.1",
+    "vite-plugin-svgr": "^3.2.0",
+    "vitest": "^0.33.0"
   }
 }
