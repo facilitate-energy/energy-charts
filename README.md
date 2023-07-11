@@ -1,6 +1,7 @@
 # Energy Charts
 
 [![license](https://img.shields.io/github/license/facilitate-energy/energy-charts?color=blueviolet)](LICENSE)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/a1d97599-86ab-4bc6-8f90-5cbe783479ef/deploy-status)](https://app.netlify.com/sites/energy-charts/deploys)
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app) and migrated to [Vite](https://vitejs.dev/).
 
