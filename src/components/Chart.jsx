@@ -174,10 +174,10 @@ function Chart(props) {
                           (seriesTitles && seriesTitles[series.seriesName]) ||
                           series.seriesName
                         }: ${formattedNumber(
-                            datum[1],
-                            locale,
-                            numberStyle
-                          )} ${unit}
+                          datum[1],
+                          locale,
+                          numberStyle
+                        )} ${unit}
                         Total: ${formattedNumber(
                           getTotal(scenario.data, datum[0]),
                           locale,

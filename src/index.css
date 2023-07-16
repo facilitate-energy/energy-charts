@@ -93,14 +93,16 @@ button:focus:not(:focus-visible) {
 }
 
 @media only screen and (max-width: 768px) {
-  nav.nav-tabs, nav.nav-underscore {
+  nav.nav-tabs,
+  nav.nav-underscore {
     flex-wrap: nowrap;
     overflow-x: auto;
     overflow-y: hidden;
   }
 }
 
-.nav-underscore .nav-link, .nav-tabs .nav-link {
+.nav-underscore .nav-link,
+.nav-tabs .nav-link {
   color: #495057;
 }
 

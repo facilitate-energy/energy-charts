@@ -31,9 +31,9 @@ function App({ config }) {
     : null;
 
   const loadShowDifference = searchParams.get("diff")
-    ? searchParams.get("diff").toLowerCase() === "true" && loadCompareScenario
-      ? true
-      : false
+    ? !!(
+        searchParams.get("diff").toLowerCase() === "true" && loadCompareScenario
+      )
     : false;
 
   const [mainScenario, setMainScenario] = useState(loadMainScenario);
