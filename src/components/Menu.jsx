@@ -46,7 +46,7 @@ function Menu(props) {
           </Form.Select>
         </FloatingLabel>
 
-        <Collapse in={selectedScenarios[1] ? true : false}>
+        <Collapse in={!!selectedScenarios[1]}>
           <div>
             <hr className="menu-separator" />
             <Form.Switch
