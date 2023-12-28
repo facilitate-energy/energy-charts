@@ -15,7 +15,7 @@ function List(props) {
           key={idx}
           id={item}
           as="li"
-          active={selectedItem === item ? true : false}
+          active={selectedItem === item}
           onClick={() => {
             onSelection(item);
           }}

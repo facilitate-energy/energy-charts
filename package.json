@@ -1,6 +1,6 @@
 {
   "name": "energy-charts",
-  "version": "0.8.2",
+  "version": "0.10.0",
   "homepage": "https://energy-charts.netlify.app/",
   "bugs": {
     "url": "https://github.com/facilitate-energy/energy-charts/issues"
@@ -11,68 +11,54 @@
     "url": "git+https://github.com/facilitate-energy/energy-charts.git"
   },
   "dependencies": {
-    "bootstrap": "^5.2.3",
+    "bootstrap": "^5.3.2",
     "prop-types": "^15.8.1",
     "react": "^18.2.0",
-    "react-bootstrap": "^2.7.4",
+    "react-bootstrap": "^2.9.2",
     "react-dom": "^18.2.0",
-    "react-icons": "^4.8.0",
-    "react-markdown": "^8.0.7",
-    "react-router-dom": "^6.10.0",
-    "rehype-raw": "^6.1.1",
-    "remark-gfm": "^3.0.1",
-    "victory": "^36.6.8",
-    "web-vitals": "^3.3.1"
+    "react-icons": "^4.12.0",
+    "react-markdown": "^9.0.1",
+    "react-router-dom": "~6.9.0",
+    "rehype-raw": "^7.0.0",
+    "remark-gfm": "^4.0.0",
+    "victory": "^36.7.0",
+    "web-vitals": "^3.5.1"
   },
+  "type": "module",
   "main": "dist/App.js",
   "module": "dist/App.js",
   "files": [
     "dist"
   ],
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "dist-build": "rm -rf dist && SET NODE_ENV=production && babel src --out-dir dist --copy-files"
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+    "start": "vite",
+    "build": "vite build",
+    "serve": "vite preview",
+    "test": "vitest",
+    "dist-build": "del dist && SET NODE_ENV=production && babel src --out-dir dist --copy-files"
   },
   "devDependencies": {
-    "@babel/cli": "^7.21.0",
-    "@babel/preset-env": "^7.21.4",
-    "@babel/preset-react": "^7.18.6",
-    "@testing-library/jest-dom": "^5.16.5",
-    "@testing-library/react": "^14.0.0",
-    "@testing-library/user-event": "^14.4.3",
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
+    "@babel/preset-env": "^7.23.6",
+    "@babel/preset-react": "^7.23.3",
+    "@testing-library/jest-dom": "^6.1.6",
+    "@testing-library/react": "^14.1.2",
+    "@testing-library/user-event": "^14.5.1",
+    "@vitejs/plugin-legacy": "^5.2.0",
+    "@vitejs/plugin-react": "^4.2.1",
+    "eslint": "^8.56.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-config-react-app": "^7.0.1",
+    "eslint-plugin-prettier": "^5.1.2",
     "eslint-plugin-react-hooks": "^4.6.0",
     "git-format-staged": "^3.0.0",
     "husky": "^8.0.3",
-    "prettier": "^2.8.7",
-    "react-scripts": "^5.0.1"
-  },
-  "prettier": {
-    "trailingComma": "none",
-    "tabWidth": 2,
-    "semi": true,
-    "singleQuote": false,
-    "endOfLine": "crlf",
-    "quoteProps": "preserve"
+    "jsdom": "^23.0.1",
+    "prettier": "^3.1.1",
+    "terser": "^5.26.0",
+    "vite": "^5.0.10",
+    "vite-plugin-eslint": "^1.8.1",
+    "vite-plugin-svgr": "^4.2.0",
+    "vitest": "^1.1.0"
   }
 }
