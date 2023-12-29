@@ -37,6 +37,17 @@
     "test": "vitest",
     "dist-build": "del dist && SET NODE_ENV=production && babel src --out-dir dist --copy-files"
   },
+  "browserslist": {
+    "production": [
+      ">0.3%",
+      "not dead"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 11 safari version"
+    ]
+  },
   "devDependencies": {
     "@babel/cli": "^7.23.4",
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
