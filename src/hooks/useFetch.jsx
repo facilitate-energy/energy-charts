@@ -20,7 +20,7 @@ function useFetch(url, cache) {
       } else {
         try {
           const response = await fetch(url);
-          let data = null;
+          let data;
           const contentType = await response.headers.get("content-type");
           if (contentType.includes("application/json")) {
             data = await response.json();
