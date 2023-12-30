@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect, Suspense } from "react";
 import { Routes, Route, Navigate, useSearchParams } from "react-router-dom";
-import useMediaQuery from "./hooks/useMediaQuery";
+import { useMediaQuery } from "./hooks";
 import { Layout } from "./containers";
 import { PageLoading, ChartsPage, Charts, Page } from "./components";
 
