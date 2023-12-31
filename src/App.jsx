@@ -37,7 +37,9 @@ function App({ config }) {
     : false;
 
   const [mainScenario, setMainScenario] = useState(loadMainScenario);
+  const [mainScenarioChoices, setMainScenarioChoices] = useState([]);
   const [compareScenario, setCompareScenario] = useState(loadCompareScenario);
+  const [compareScenarioChoices, setCompareScenarioChoices] = useState([]);
   const [showDifference, setShowDifference] = useState(loadShowDifference);
 
   const cache = useRef({});
