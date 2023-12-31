@@ -24,7 +24,7 @@ export default defineConfig(() => {
       eslint(),
       // svgr options: https://react-svgr.com/docs/options/
       svgr({ svgrOptions: { icon: true } }),
-      legacy({ targets: ["defaults"] })
+      legacy()
     ],
     test: {
       globals: true,

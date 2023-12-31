@@ -10,7 +10,7 @@ import {
   VictoryStack,
   VictoryTooltip
 } from "victory";
-import useFetch from "../hooks/useFetch";
+import { useFetch } from "../hooks";
 import calculateDifference from "../utils/calculateDifference";
 import normaliseData from "../utils/normaliseData";
 

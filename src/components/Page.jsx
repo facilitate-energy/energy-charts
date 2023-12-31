@@ -4,14 +4,14 @@ import { Row, Col } from "react-bootstrap";
 import Markdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import rehypeRaw from "rehype-raw";
-import useFetchText from "../hooks/useFetch";
+import { useFetch } from "../hooks";
 import { NotFound, PageLoading } from "../components";
 
 function Page(props) {
   const { pageId } = useParams();
   const { basePath = "", cache, name } = props;
   const page = name ? name : pageId;
-  const [contentIsLoading, content] = useFetchText(
+  const [contentIsLoading, content] = useFetch(
     `${basePath}/pages/${page}.md`,
     cache
   );

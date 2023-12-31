@@ -17,7 +17,7 @@ function Menu(props) {
     props.setShowDifference(e.target.checked);
   };
 
-  const Title = props.Tilte ? props.Title : "Scenarios";
+  const Title = props.Title ? props.Title : "Scenarios";
 
   return (
     <>
