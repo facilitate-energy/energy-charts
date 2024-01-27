@@ -1,11 +1,12 @@
 {
   "name": "energy-charts",
-  "version": "0.10.2",
+  "version": "0.10.3",
   "homepage": "https://energy-charts.netlify.app/",
   "bugs": {
     "url": "https://github.com/facilitate-energy/energy-charts/issues"
   },
   "license": "Apache-2.0",
+  "author": "Olexandr Balyk <ob@facilitate.energy>",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/facilitate-energy/energy-charts.git"
