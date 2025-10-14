@@ -62,10 +62,15 @@ const config = {
       variant: "tabs"
     },
     {
-      path: "group1/*",
-      links: [
-        { to: "subgroup1", text: "Subgroup 1" },
-        { to: "subgroup2", text: "Subgroup 2" }
+      path: "group1",
+      routes: [
+        {
+          path: "*",
+          links: [
+            { to: "../subgroup1", text: "Subgroup 1" },
+            { to: "../subgroup2", text: "Subgroup 2" }
+          ]
+        }
       ],
       variant: "underscore"
     }
