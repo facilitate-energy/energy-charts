@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect, Suspense } from "react";
-import { Routes, Route, Navigate, useSearchParams } from "react-router-dom";
+import { Routes, Route, Navigate, useSearchParams } from "react-router";
 import { useMediaQuery } from "./hooks";
 import { Layout } from "./containers";
 import { PageLoading, ChartsPage, Charts, Page } from "./components";
@@ -80,7 +80,7 @@ function App({ config }) {
           {config.landingPage ? (
             <Route
               index
-              element={<Navigate to={config.landingPage} replace={true} />}
+              element={<Navigate replace to={config.landingPage} />}
             />
           ) : (
             <Route
@@ -94,93 +94,93 @@ function App({ config }) {
             path=":pageId"
             element={<Page cache={cache} basePath={config.basePath} />}
           />
-          <Route
-            path={config.chartsPath}
-            element={
-              <ChartsPage
-                {...config}
-                selectedScenarios={[mainScenario, compareScenario]}
-                showDifference={showDifference}
-                setMainScenario={setMainScenario}
-                setCompareScenario={setCompareScenario}
-                setShowDifference={setShowDifference}
-              />
-            }
-          >
+          <Route path={config.chartsPath}>
             <Route
-              index
-              element={<Navigate to={config.routes[0].path} replace={true} />}
-            />
-            {config.routes.map((route, idx) => (
+              path="*"
+              element={
+                <ChartsPage
+                  {...config}
+                  selectedScenarios={[mainScenario, compareScenario]}
+                  showDifference={showDifference}
+                  setMainScenario={setMainScenario}
+                  setCompareScenario={setCompareScenario}
+                  setShowDifference={setShowDifference}
+                />
+              }
+            >
               <Route
-                key={idx}
-                path={route.path}
-                element={
-                  route.charts && (
-                    <Charts
-                      selectedScenarios={[mainScenario, compareScenario]}
-                      showDifference={showDifference}
-                      basePath={config.basePath}
-                      charts={route.charts}
-                      chartsInfo={config.chartsInfo}
-                      cache={cache}
-                      xDomainPadding={config.xDomainPadding}
-                      xGridValues={config.xGridValues}
-                      xGridMarks={config.xGridMarks}
-                      fixedDomain={config.fixedDomain}
-                      chartWidth={chartWidth}
-                      chartWidthScaling={chartWidthScaling}
-                      stackbarOffset={config.stackbarOffset}
-                      padding={config.chartPadding}
-                      barWidth={config.barWidth}
-                      {...titles}
-                    />
-                  )
-                }
-              >
-                {route.routes && (
-                  <>
-                    <Route
-                      index
-                      element={
-                        <Navigate to={route.routes[0].path} replace={true} />
-                      }
-                    />
-                    {route.routes.map((route, idx) => (
-                      <Route
-                        key={idx}
-                        path={route.path}
-                        element={
-                          route.charts && (
-                            <Charts
-                              selectedScenarios={[
-                                mainScenario,
-                                compareScenario
-                              ]}
-                              showDifference={showDifference}
-                              basePath={config.basePath}
-                              charts={route.charts}
-                              chartsInfo={config.chartsInfo}
-                              cache={cache}
-                              xDomainPadding={config.xDomainPadding}
-                              xGridValues={config.xGridValues}
-                              xGridMarks={config.xGridMarks}
-                              fixedDomain={config.fixedDomain}
-                              chartWidth={chartWidth}
-                              chartWidthScaling={chartWidthScaling}
-                              stackbarOffset={config.stackbarOffset}
-                              padding={config.chartPadding}
-                              barWidth={config.barWidth}
-                              {...titles}
-                            />
-                          )
-                        }
+                index
+                element={<Navigate replace to={config.routes[0].path} />}
+              />
+              {config.routes.map((route, idx) => (
+                <Route
+                  key={idx}
+                  path={route.path}
+                  element={
+                    route.charts && (
+                      <Charts
+                        selectedScenarios={[mainScenario, compareScenario]}
+                        showDifference={showDifference}
+                        basePath={config.basePath}
+                        charts={route.charts}
+                        chartsInfo={config.chartsInfo}
+                        cache={cache}
+                        xDomainPadding={config.xDomainPadding}
+                        xGridValues={config.xGridValues}
+                        xGridMarks={config.xGridMarks}
+                        fixedDomain={config.fixedDomain}
+                        chartWidth={chartWidth}
+                        chartWidthScaling={chartWidthScaling}
+                        stackbarOffset={config.stackbarOffset}
+                        padding={config.chartPadding}
+                        barWidth={config.barWidth}
+                        {...titles}
                       />
-                    ))}
-                  </>
-                )}
-              </Route>
-            ))}
+                    )
+                  }
+                >
+                  {route.routes && (
+                    <>
+                      <Route
+                        index
+                        element={<Navigate replace to={route.routes[0].path} />}
+                      />
+                      {route.routes.map((route, idx) => (
+                        <Route
+                          key={idx}
+                          path={route.path}
+                          element={
+                            route.charts && (
+                              <Charts
+                                selectedScenarios={[
+                                  mainScenario,
+                                  compareScenario
+                                ]}
+                                showDifference={showDifference}
+                                basePath={config.basePath}
+                                charts={route.charts}
+                                chartsInfo={config.chartsInfo}
+                                cache={cache}
+                                xDomainPadding={config.xDomainPadding}
+                                xGridValues={config.xGridValues}
+                                xGridMarks={config.xGridMarks}
+                                fixedDomain={config.fixedDomain}
+                                chartWidth={chartWidth}
+                                chartWidthScaling={chartWidthScaling}
+                                stackbarOffset={config.stackbarOffset}
+                                padding={config.chartPadding}
+                                barWidth={config.barWidth}
+                                {...titles}
+                              />
+                            )
+                          }
+                        />
+                      ))}
+                    </>
+                  )}
+                </Route>
+              ))}
+            </Route>
           </Route>
         </Route>
       </Routes>
