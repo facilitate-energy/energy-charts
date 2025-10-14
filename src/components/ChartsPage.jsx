@@ -1,5 +1,5 @@
 import React from "react";
-import { Routes, Route, Outlet } from "react-router-dom";
+import { Routes, Route, Outlet } from "react-router";
 import { Col, Container } from "react-bootstrap";
 import { Menu, MobileMenu, NavRow } from "../components";
 
