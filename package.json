@@ -65,6 +65,7 @@
     "husky": "^9.1.7",
     "jsdom": "^27.0.1",
     "terser": "^5.44.0",
+    "globals": "^16.4.0",
     "vite": "npm:rolldown-vite@7.1.19",
     "vite-plugin-svgr": "^4.5.0",
     "vitest": "^3.2.4"
