@@ -25,14 +25,32 @@ function ChartsPage(props) {
       </Col>
       <Col as="main">
         <MobileMenu {...menuProps} />
-        {props.contentNavs.map((nav, idx) => (
-          <Routes key={idx}>
+        <Routes>
+          {props.contentNavs.map((nav, idx) => (
             <Route
+              key={idx}
               path={nav.path}
-              element={<NavRow navLinks={nav.links} variant={nav.variant} />}
-            />
-          </Routes>
-        ))}
+              element={
+                nav.links ? (
+                  <NavRow navLinks={nav.links} variant={nav.variant} />
+                ) : (
+                  <Outlet />
+                )
+              }
+            >
+              {nav.routes &&
+                nav.routes.map((route, idx) => (
+                  <Route
+                    key={idx}
+                    path={route.path}
+                    element={
+                      <NavRow navLinks={nav.links} variant={nav.variant} />
+                    }
+                  />
+                ))}
+            </Route>
+          ))}
+        </Routes>
         <Outlet />
       </Col>
     </>
