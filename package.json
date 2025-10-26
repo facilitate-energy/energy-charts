@@ -14,9 +14,9 @@
   "dependencies": {
     "bootstrap": "^5.3.8",
     "prop-types": "^15.8.1",
-    "react": "^18.3.1",
-    "react-bootstrap": "^2.10.10",
-    "react-dom": "^18.3.1",
+    "react": "^19.2.0",
+    "react-bootstrap": "^3.0.0-beta.5",
+    "react-dom": "^19.2.0",
     "react-icons": "^5.5.0",
     "react-markdown": "^10.1.0",
     "react-router-dom": "6.9.x",
@@ -34,8 +34,9 @@
   "scripts": {
     "start": "vite",
     "build": "vite build",
-    "serve": "vite preview",
+    "preview": "vite preview",
     "test": "vitest",
+    "lint": "eslint .",
     "dist-build": "del dist && SET NODE_ENV=production && babel src --out-dir dist --copy-files"
   },
   "browserslist": {
@@ -50,28 +51,28 @@
     ]
   },
   "devDependencies": {
-    "@babel/cli": "^7.28.3",
-    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
-    "@babel/preset-env": "^7.28.3",
-    "@babel/preset-react": "^7.27.1",
+    "@eslint/js": "^9.38.0",
     "@testing-library/jest-dom": "^6.9.1",
     "@testing-library/react": "^16.3.0",
     "@testing-library/user-event": "^14.6.1",
-    "@vitejs/plugin-legacy": "^6.1.1",
-    "@vitejs/plugin-react": "^5.0.4",
-    "eslint": "^8.57.0",
-    "eslint-config-prettier": "^9.1.0",
-    "eslint-config-react-app": "^7.0.1",
-    "eslint-plugin-prettier": "^5.5.4",
-    "eslint-plugin-react-hooks": "^4.6.2",
+    "@types/react": "^19.2.2",
+    "@types/react-dom": "^19.2.2",
+    "@vitejs/plugin-react": "^5.1.0",
+    "eslint": "^9.38.0",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-react-hooks": "^7.0.1",
+    "eslint-plugin-react-refresh": "^0.4.24",
     "git-format-staged": "^3.1.1",
+    "globals": "^16.4.0",
     "husky": "^9.1.7",
-    "jsdom": "^27.0.0",
+    "jsdom": "^27.0.1",
     "prettier": "^3.6.2",
     "terser": "^5.44.0",
-    "vite": "^6.3.6",
-    "vite-plugin-eslint": "^1.8.1",
+    "vite": "npm:rolldown-vite@7.1.19",
     "vite-plugin-svgr": "^4.5.0",
-    "vitest": "^2.1.8"
+    "vitest": "^4.0.3"
+  },
+  "overrides": {
+    "vite": "npm:rolldown-vite@7.1.19"
   }
 }
