@@ -11,6 +11,9 @@
     "type": "git",
     "url": "git+https://github.com/facilitate-energy/energy-charts.git"
   },
+  "engines": {
+    "node": ">=20.0.0"
+  },
   "dependencies": {
     "bootstrap": "^5.3.8",
     "prop-types": "^15.8.1",
