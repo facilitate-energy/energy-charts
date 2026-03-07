@@ -16,15 +16,16 @@ describe("useFetch", () => {
     vi.restoreAllMocks();
   });
 
-  test("starts in a fetching state", () => {
+  test("starts in a fetching state", async () => {
     global.fetch.mockResolvedValue({
       headers: { get: () => "application/json" },
       json: async () => ({})
     });
     const cache = makeCacheRef();
     const { result } = renderHook(() => useFetch("/data/test.json", cache));
-    const [isFetching] = result.current;
-    expect(isFetching).toBe(true);
+    expect(result.current[0]).toBe(true);
+    // Flush the pending state update from the resolved fetch to avoid act() warnings
+    await waitFor(() => expect(result.current[0]).toBe(false));
   });
 
   test("fetches JSON and returns parsed data", async () => {

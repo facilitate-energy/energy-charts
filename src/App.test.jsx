@@ -1,4 +1,4 @@
-import { render, screen, waitFor } from "@testing-library/react";
+import { render, screen, waitFor, act } from "@testing-library/react";
 import { vi, beforeEach, afterEach } from "vitest";
 import { MemoryRouter, useLocation } from "react-router-dom";
 import App from "./App";
@@ -39,8 +39,10 @@ function renderApp(initialEntries = ["/"]) {
   );
 }
 
-test("renders without crashing", () => {
-  renderApp();
+test("renders without crashing", async () => {
+  await act(async () => {
+    renderApp();
+  });
   expect(document.body).toBeTruthy();
 });
 
@@ -66,7 +68,9 @@ test("redirects /charts to /charts/group1/subgroup1", async () => {
   });
 });
 
-test("renders the charts path route", () => {
-  renderApp(["/charts/group2"]);
+test("renders the charts path route", async () => {
+  await act(async () => {
+    renderApp(["/charts/group2"]);
+  });
   expect(document.body).toBeTruthy();
 });
