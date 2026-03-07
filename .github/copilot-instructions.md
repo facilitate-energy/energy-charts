@@ -53,9 +53,10 @@ tests/
   - Double quotes for strings
   - Semicolons required
   - No trailing commas
-- **Linting**: ESLint flat config (`eslint.config.js`). Run `npm run lint` before committing.
-- **Imports**: Use named exports from `index.jsx` barrel files where they exist (e.g. `components/index.jsx`, `containers/index.jsx`, `hooks/index.jsx`).
+- **Linting**: ESLint flat config (`eslint.config.js`). Run `npm run lint` before committing. Variables matching `^[A-Z_]` are exempt from the `no-unused-vars` rule.
+- **Imports**: Use named exports from `index.jsx` barrel files where they exist (e.g. `components/index.jsx`, `containers/index.jsx`, `hooks/index.jsx`). The `~` alias resolves to `./src` (configured in `vite.config.js`).
 - **Components**: Functional components with React hooks. PropTypes are used for runtime prop validation.
+- **SVG imports**: SVGR is configured (`vite-plugin-svgr`); SVG files can be imported as React components.
 - **No TypeScript**: Keep all new files as `.js` or `.jsx`.
 
 ## Testing
@@ -63,6 +64,7 @@ tests/
 - Tests live alongside source files (e.g. `src/App.test.jsx`) or in the `tests/` directory.
 - Use **Vitest** and **@testing-library/react**.
 - The test environment is `jsdom` (configured in `vite.config.js`).
+- Vitest globals (`describe`, `test`, `it`, `expect`, `vi`, etc.) are enabled — no need to import them.
 - Run a specific test file: `npm test -- src/App.test.jsx`
 - Run all tests: `npm test`
 
@@ -74,11 +76,14 @@ Real deployments replace `src/config.js` with a project-specific config. Key con
 |----------|---------|
 | `scenarios` | List of scenario groups available in the selector |
 | `defaultScenarioGroup` | Scenario selected on first load |
+| `landingPage` | Route to redirect to from `/` (e.g. `"about"`) |
 | `routes` | Chart page routes and nested sub-routes |
 | `chartsInfo` | Metadata for each chart (from `src/specs/chartsInfo.js`) |
 | `contentNavs` | In-page navigation tabs/links |
 | `headerNavLinks` | Top nav bar links |
 | `basePath` | Base URL path for data/page fetches |
+| `maxChartWidth` | Maximum chart width in pixels (default: 450) |
+| `showSearchParams` | Sync scenario selection to URL query params (`?scen1=`, `?scen2=`, `?diff=`) |
 
 Scenario data (JSON) goes in `public/data/`; markdown pages go in `public/pages/`.
 
