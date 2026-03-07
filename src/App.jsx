@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect, Suspense } from "react";
-import { Routes, Route, Navigate, useSearchParams } from "react-router";
+import { Routes, Route, Navigate, Outlet, useSearchParams } from "react-router";
 import { useMediaQuery } from "./hooks";
 import { Layout } from "./containers";
 import { PageLoading, ChartsPage, Charts, Page } from "./components";
@@ -80,7 +80,13 @@ function App({ config }) {
           {config.landingPage ? (
             <Route
               index
-              element={<Navigate replace to={config.landingPage} />}
+              element={
+                <Page
+                  cache={cache}
+                  basePath={config.basePath}
+                  name={config.landingPage}
+                />
+              }
             />
           ) : (
             <Route
@@ -116,7 +122,7 @@ function App({ config }) {
                 key={idx}
                 path={route.path}
                 element={
-                  route.charts && (
+                  route.charts ? (
                     <Charts
                       selectedScenarios={[mainScenario, compareScenario]}
                       showDifference={showDifference}
@@ -135,7 +141,9 @@ function App({ config }) {
                       barWidth={config.barWidth}
                       {...titles}
                     />
-                  )
+                  ) : route.routes ? (
+                    <Outlet />
+                  ) : null
                 }
               >
                 {route.routes && (
