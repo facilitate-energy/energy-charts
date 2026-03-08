@@ -1,9 +1,18 @@
-import { expect, afterEach } from "vitest";
+import { afterEach, vi } from "vitest";
 import { cleanup } from "@testing-library/react";
-import matchers from "@testing-library/jest-dom/matchers";
+import "@testing-library/jest-dom/vitest";
 
-// extends Vitest's expect method with methods from react-testing-library
-expect.extend(matchers);
+// jsdom does not implement window.matchMedia; provide a minimal stub so that
+// components using the useMediaQuery hook can be rendered in tests.
+Object.defineProperty(window, "matchMedia", {
+  writable: true,
+  value: vi.fn((query) => ({
+    matches: false,
+    media: query,
+    addEventListener: vi.fn(),
+    removeEventListener: vi.fn()
+  }))
+});
 
 // runs a cleanup after each test case (e.g. clearing jsdom)
 afterEach(() => {
