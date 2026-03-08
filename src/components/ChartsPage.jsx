@@ -3,6 +3,37 @@ import { Routes, Route, Outlet } from "react-router";
 import { Col, Container } from "react-bootstrap";
 import { Menu, MobileMenu, NavRow } from "../components";
 
+function navElement(nav) {
+  if (nav.links) {
+    return (
+      <>
+        <NavRow navLinks={nav.links} variant={nav.variant} />
+        <Outlet />
+      </>
+    );
+  }
+  return <Outlet />;
+}
+
+function renderNavRoute(nav, idx) {
+  return (
+    <Route key={idx} path={nav.path} element={navElement(nav)}>
+      {nav.routes &&
+        nav.routes.map((route, routeIdx) => (
+          <Route
+            key={routeIdx}
+            path={route.path}
+            element={
+              route.links ? (
+                <NavRow navLinks={route.links} variant={nav.variant} />
+              ) : null
+            }
+          />
+        ))}
+    </Route>
+  );
+}
+
 function ChartsPage(props) {
   const scenarioList = props.scenarios.map((scenario) => scenario.name);
 
@@ -16,6 +47,12 @@ function ChartsPage(props) {
     setShowDifference: props.setShowDifference
   };
 
+  // Separate the catch-all nav ("*") from path-specific sub-navs.
+  // The catch-all nav must be the parent route so it always renders; path-specific
+  // navs are nested inside it as children, allowing both to render simultaneously.
+  const catchAllNav = props.contentNavs.find((nav) => nav.path === "*");
+  const pathNavs = props.contentNavs.filter((nav) => nav.path !== "*");
+
   return (
     <>
       <Col as="aside" md="auto" className="p-3 d-none d-md-block">
@@ -26,30 +63,26 @@ function ChartsPage(props) {
       <Col as="main">
         <MobileMenu {...menuProps} />
         <Routes>
-          {props.contentNavs.map((nav, idx) => (
+          {catchAllNav ? (
             <Route
-              key={idx}
-              path={nav.path}
+              path="*"
               element={
-                nav.links ? (
-                  <NavRow navLinks={nav.links} variant={nav.variant} />
-                ) : (
+                <>
+                  {catchAllNav.links && (
+                    <NavRow
+                      navLinks={catchAllNav.links}
+                      variant={catchAllNav.variant}
+                    />
+                  )}
                   <Outlet />
-                )
+                </>
               }
             >
-              {nav.routes &&
-                nav.routes.map((route, idx) => (
-                  <Route
-                    key={idx}
-                    path={route.path}
-                    element={
-                      <NavRow navLinks={nav.links} variant={nav.variant} />
-                    }
-                  />
-                ))}
+              {pathNavs.map(renderNavRoute)}
             </Route>
-          ))}
+          ) : (
+            props.contentNavs.map(renderNavRoute)
+          )}
         </Routes>
         <Outlet />
       </Col>

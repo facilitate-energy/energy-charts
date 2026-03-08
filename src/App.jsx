@@ -58,13 +58,13 @@ function App({ config }) {
       setShowDifference(false);
     }
 
-    showSearchParams
-      ? setSearchParams({
-          "scen1": mainScenario,
-          "scen2": compareScenario,
-          "diff": showDifference
-        })
-      : setSearchParams();
+    if (showSearchParams) {
+      setSearchParams({
+        "scen1": mainScenario,
+        "scen2": compareScenario,
+        "diff": showDifference
+      });
+    }
   }, [
     mainScenario,
     compareScenario,
