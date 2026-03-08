@@ -1,5 +1,5 @@
 import React from "react";
-import { useParams } from "react-router-dom";
+import { useParams } from "react-router";
 import { Row, Col } from "react-bootstrap";
 import Markdown from "react-markdown";
 import remarkGfm from "remark-gfm";

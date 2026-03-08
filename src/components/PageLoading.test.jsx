@@ -17,6 +17,8 @@ describe("PageLoading", () => {
 
   test("renders a visible Loading heading", () => {
     render(<PageLoading />);
-    expect(screen.getByRole("heading", { name: "Loading..." })).toBeInTheDocument();
+    expect(
+      screen.getByRole("heading", { name: "Loading..." })
+    ).toBeInTheDocument();
   });
 });
