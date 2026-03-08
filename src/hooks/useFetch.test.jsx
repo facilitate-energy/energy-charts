@@ -84,6 +84,7 @@ describe("useFetch", () => {
   });
 
   test("returns null content on fetch error", async () => {
+    vi.spyOn(console, "error").mockImplementation(() => {});
     global.fetch.mockRejectedValue(new Error("Network error"));
     const cache = makeCacheRef();
     const { result } = renderHook(() => useFetch("/bad-url.json", cache));
@@ -95,6 +96,9 @@ describe("useFetch", () => {
 
     const [, content] = result.current;
     expect(content).toBeNull();
+    expect(console.error).toHaveBeenCalledWith(
+      expect.objectContaining({ message: "Network error" })
+    );
   });
 
   test("does not fetch when url is falsy, sets isFetching false immediately", async () => {
