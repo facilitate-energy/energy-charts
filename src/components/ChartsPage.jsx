@@ -44,7 +44,7 @@ function ChartsPage(props) {
                     key={idx}
                     path={route.path}
                     element={
-                      <NavRow navLinks={nav.links} variant={nav.variant} />
+                      <NavRow navLinks={route.links} variant={nav.variant} />
                     }
                   />
                 ))}
