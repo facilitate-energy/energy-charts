@@ -24,10 +24,7 @@ function useFetch(url, cache) {
           const contentType = await response.headers.get("content-type");
           if (contentType.includes("application/json")) {
             data = await response.json();
-          } else if (
-            contentType.includes("markdown") ||
-            (contentType.includes("text/plain") && url.endsWith(".md"))
-          ) {
+          } else if (contentType.includes("markdown")) {
             data = await response.text();
           } else {
             data = null;

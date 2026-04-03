@@ -9,12 +9,7 @@ function NavRow(props) {
     <Row>
       <Nav as="nav" variant={variant}>
         {navLinks.map((navLink, index) => (
-          <NavLink
-            className="nav-link text-nowrap"
-            to={navLink.to}
-            relative={navLink.relative}
-            key={index}
-          >
+          <NavLink className="nav-link text-nowrap" to={navLink.to} key={index}>
             {navLink.text}
           </NavLink>
         ))}
