@@ -70,9 +70,7 @@ describe("useFetch", () => {
       text: async () => "<html/>"
     });
     const cache = makeCacheRef();
-    const { result } = renderHook(() =>
-      useFetch("/something.html", cache)
-    );
+    const { result } = renderHook(() => useFetch("/something.html", cache));
 
     await waitFor(() => {
       const [isFetching] = result.current;
@@ -116,9 +114,7 @@ describe("useFetch", () => {
   test("returns cached data without fetching again", async () => {
     const cached = { cached: true };
     const cache = makeCacheRef({ "/data/cached.json": cached });
-    const { result } = renderHook(() =>
-      useFetch("/data/cached.json", cache)
-    );
+    const { result } = renderHook(() => useFetch("/data/cached.json", cache));
 
     await waitFor(() => {
       const [isFetching] = result.current;
@@ -137,9 +133,7 @@ describe("useFetch", () => {
       json: async () => payload
     });
     const cache = makeCacheRef();
-    const { result } = renderHook(() =>
-      useFetch("/data/store.json", cache)
-    );
+    const { result } = renderHook(() => useFetch("/data/store.json", cache));
 
     await waitFor(() => {
       const [isFetching] = result.current;

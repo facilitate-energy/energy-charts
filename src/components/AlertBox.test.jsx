@@ -25,7 +25,9 @@ describe("AlertBox", () => {
   });
 
   test("does not render paragraph when text is not provided", () => {
-    const { container } = render(<AlertBox heading="Only heading" variant="primary" />);
+    const { container } = render(
+      <AlertBox heading="Only heading" variant="primary" />
+    );
     expect(container.querySelector("p")).not.toBeInTheDocument();
   });
 });

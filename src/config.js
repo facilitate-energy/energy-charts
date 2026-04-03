@@ -5,7 +5,7 @@ import scenarioTitles from "./specs/scenarioTitles";
 
 const config = {
   chartsInfo: chartsInfo,
-  chartsPath: "charts/*",
+  chartsPath: "charts",
   demo: true,
   fixedDomain: true,
   titles: {
@@ -56,16 +56,21 @@ const config = {
     {
       path: "*",
       links: [
-        { to: "group1", text: "Group 1" },
-        { to: "group2", text: "Group 2" }
+        { to: "../group1", text: "Group 1" },
+        { to: "../group2", text: "Group 2" }
       ],
       variant: "tabs"
     },
     {
-      path: "group1/*",
-      links: [
-        { to: "subgroup1", text: "Subgroup 1" },
-        { to: "subgroup2", text: "Subgroup 2" }
+      path: "group1",
+      routes: [
+        {
+          path: "*",
+          links: [
+            { to: "../subgroup1", text: "Subgroup 1" },
+            { to: "../subgroup2", text: "Subgroup 2" }
+          ]
+        }
       ],
       variant: "underscore"
     }
