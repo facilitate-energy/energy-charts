@@ -32,7 +32,8 @@
   "main": "dist/App.js",
   "module": "dist/App.js",
   "exports": {
-    ".": "./dist/App.js"
+    ".": "./dist/App.js",
+    "./useFetch": "./dist/useFetch.js"
   },
   "files": [
     "dist"

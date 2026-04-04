@@ -11,9 +11,10 @@ export default defineConfig({
   },
   build: {
     lib: {
-      entry: path.resolve(__dirname, "src/App.jsx"),
-      name: "EnergyCharts",
-      fileName: "App",
+      entry: {
+        App: path.resolve(__dirname, "src/App.jsx"),
+        useFetch: path.resolve(__dirname, "src/hooks/useFetch.jsx")
+      },
       formats: ["es"]
     },
     rollupOptions: {
