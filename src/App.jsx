@@ -53,16 +53,14 @@ function App({ config }) {
     seriesTitles: config.titles.series
   };
 
-  useEffect(() => {
-    if (!compareScenario) {
-      setShowDifference(false);
-    }
+  const effectiveShowDifference = compareScenario ? showDifference : false;
 
+  useEffect(() => {
     if (showSearchParams) {
       setSearchParams({
         "scen1": mainScenario,
         "scen2": compareScenario,
-        "diff": showDifference
+        "diff": compareScenario ? showDifference : false
       });
     }
   }, [
@@ -101,7 +99,7 @@ function App({ config }) {
                 <ChartsPage
                   {...config}
                   selectedScenarios={[mainScenario, compareScenario]}
-                  showDifference={showDifference}
+                  showDifference={effectiveShowDifference}
                   setMainScenario={setMainScenario}
                   setCompareScenario={setCompareScenario}
                   setShowDifference={setShowDifference}
@@ -120,7 +118,7 @@ function App({ config }) {
                     route.charts && (
                       <Charts
                         selectedScenarios={[mainScenario, compareScenario]}
-                        showDifference={showDifference}
+                        showDifference={effectiveShowDifference}
                         basePath={config.basePath}
                         charts={route.charts}
                         chartsInfo={config.chartsInfo}
@@ -156,7 +154,7 @@ function App({ config }) {
                                   mainScenario,
                                   compareScenario
                                 ]}
-                                showDifference={showDifference}
+                                showDifference={effectiveShowDifference}
                                 basePath={config.basePath}
                                 charts={route.charts}
                                 chartsInfo={config.chartsInfo}

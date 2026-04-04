@@ -6,14 +6,14 @@ import svgr from "vite-plugin-svgr";
 export default defineConfig({
   resolve: {
     alias: {
-      "~": path.resolve(__dirname, "./src")
+      "~": path.resolve(import.meta.dirname, "src")
     }
   },
   build: {
     lib: {
       entry: {
-        App: path.resolve(__dirname, "src/App.jsx"),
-        useFetch: path.resolve(__dirname, "src/hooks/useFetch.jsx")
+        App: path.resolve(import.meta.dirname, "src/App.jsx"),
+        useFetch: path.resolve(import.meta.dirname, "src/hooks/useFetch.jsx")
       },
       formats: ["es"]
     },

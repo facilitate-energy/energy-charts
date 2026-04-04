@@ -12,9 +12,16 @@ function useFetch(url, cache) {
       return;
     }
 
+    const cacheStore = cache.current;
+    // Mutating cacheStore (a local ref to cache.current) is intentional: this
+    // hook implements a shared fetch cache. The react-hooks/immutability rule
+    // tracks hook arguments through assignments and disallows the mutation, but
+    // the pattern is valid here because cache is a useRef object designed to be
+    // mutated across renders.
+    /* eslint-disable react-hooks/immutability */
     const fetchData = async () => {
-      if (cache.current[url]) {
-        const data = cache.current[url];
+      if (cacheStore[url]) {
+        const data = cacheStore[url];
         setContent(data);
         setStatus(false);
       } else {
@@ -30,7 +37,7 @@ function useFetch(url, cache) {
             data = null;
           }
           if (!isCancelled) {
-            cache.current[url] = data;
+            cacheStore[url] = data;
             setContent(data);
             setStatus(false);
           }
@@ -43,6 +50,7 @@ function useFetch(url, cache) {
         }
       }
     };
+    /* eslint-enable react-hooks/immutability */
 
     fetchData();
     return () => {

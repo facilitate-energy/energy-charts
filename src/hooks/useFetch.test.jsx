@@ -1,6 +1,5 @@
 import { describe, test, expect, vi, beforeEach, afterEach } from "vitest";
 import { renderHook, waitFor } from "@testing-library/react";
-import { useRef } from "react";
 import useFetch from "./useFetch";
 
 function makeCacheRef(initial = {}) {
