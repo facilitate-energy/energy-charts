@@ -31,6 +31,10 @@
   "type": "module",
   "main": "dist/App.js",
   "module": "dist/App.js",
+  "exports": {
+    ".": "./dist/App.js",
+    "./useFetch": "./dist/useFetch.js"
+  },
   "files": [
     "dist"
   ],
@@ -40,7 +44,7 @@
     "preview": "vite preview",
     "test": "vitest",
     "lint": "eslint .",
-    "dist-build": "del dist && SET NODE_ENV=production && babel src --out-dir dist --copy-files"
+    "dist-build": "vite build --config vite.lib.config.js"
   },
   "browserslist": {
     "production": [
