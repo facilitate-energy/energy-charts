@@ -45,6 +45,7 @@ To use Energy Charts as dependency in a project run:
 ## License
 
 Copyright 2021-2024 Facilitate Energy Ltd.
+Copyright 2025-2026 Olexandr Balyk
 
 Energy Charts is licensed under the Apache License, Version 2.0.
 
